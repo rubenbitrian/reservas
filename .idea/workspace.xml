@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/apple-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/aragon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/camping_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/camping_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/camping_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/camping_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/camping_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/flecha_arriba.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/materiales/img/mobilhome_9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/StateController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/state/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,7 +184,7 @@
       <workItem from="1631610220380" duration="75000" />
       <workItem from="1631610304386" duration="477000" />
       <workItem from="1631611130223" duration="1312000" />
-      <workItem from="1631612465227" duration="5911000" />
+      <workItem from="1631612465227" duration="6102000" />
     </task>
     <servers />
   </component>

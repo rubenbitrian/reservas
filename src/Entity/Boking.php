@@ -34,7 +34,7 @@ class Boking
     private $endDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity=state::class, inversedBy="bokings")
+     * @ORM\ManyToOne(targetEntity=State::class, inversedBy="bokings")
      * @ORM\JoinColumn(nullable=false)
      */
     private $state;

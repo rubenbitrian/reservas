@@ -27,14 +27,13 @@
     </head>
     <body>
         {% include 'includes/header.html.twig' %}
-        {% block body %}
+        {% use 'includes/contenido.html.twig' %}
             <main>
-                {% use 'includes/contenido.html.twig' %}
                 {% block cnt_wrapper %}
                     {{ parent() }}
                 {% endblock %}
             </main> 
+
         {% include 'includes/pie.html.twig' %}
-        {% endblock %}
     </body>
 </html>

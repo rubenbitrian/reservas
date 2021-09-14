@@ -36,6 +36,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=userGroup::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $userGroup;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -123,5 +129,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getUserGroup(): ?userGroup
+    {
+        return $this->userGroup;
+    }
+
+    public function setUserGroup(?userGroup $userGroup): self
+    {
+        $this->userGroup = $userGroup;
+
+        return $this;
     }
 }

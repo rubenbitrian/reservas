@@ -1,10 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Administrador de mobilhomes{% endblock %}
 
 {% block body %}
-<h1>Formulario de mobilhomes</h1>
-{{ form(form) }}
-<a class="btn btn-primary mb-3" href="{{ path('admon_mobilhome') }}">Volver</a>
+    <h1>Formulario de mobilhomes</h1>
+    {{ form(form) }}
+    <a class="btn btn-primary mb-3" href="{{ path('admon_mobilhome') }}">Volver</a>
 
 {% endblock %}

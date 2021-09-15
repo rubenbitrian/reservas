@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\MobilHome;
-use App\Form\Type\MobilHomeType;
-use App\Repository\MobilHomeRepository;
+use App\Entity\MobileHome;
+use App\Form\Type\MobileHomeType;
+use App\Repository\MobileHomeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,15 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/mobilhome", name="admon_mobilhome")
  */
-class MobilHomeController extends AbstractController
+class MobileHomeController extends AbstractController
 {
     /**
      * @Route("/", name="")
      */
-    public function index(MobilHomeRepository $repo): Response
+    public function index(MobileHomeRepository $repo): Response
     {
         $arr = $repo->findAll();
-        return $this->render('mobil_home/index.html.twig', [
+        return $this->render('mobile_home/index.html.twig', [
             'arr' => $arr,
         ]);
     }
@@ -30,9 +30,9 @@ class MobilHomeController extends AbstractController
      * @Route("/add", name="_add")
      * @Route("/edit/{id}", name="_edit")
      */
-    public function edit($id = 0, MobilHomeRepository $repo, Request $req): Response {
+    public function edit($id = 0, MobileHomeRepository $repo, Request $req): Response {
 
-        $est = new MobilHome();
+        $est = new MobileHome();
         if ($id != 0) {
             $est = $repo->find($id);
             if ($est == null) {
@@ -41,7 +41,7 @@ class MobilHomeController extends AbstractController
             }
         }
 
-        $form = $this->createForm(MobilHomeType::class, $est);
+        $form = $this->createForm(MobileHomeType::class, $est);
 
         $form->handleRequest($req);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -55,7 +55,7 @@ class MobilHomeController extends AbstractController
             return $this->redirectToRoute("admon_mobilhome");
         }
 
-        return $this->render('mobil_home/edit.html.twig', [
+        return $this->render('mobile_home/edit.html.twig', [
             "form" => $form->createView()
         ]);
     }
@@ -63,8 +63,8 @@ class MobilHomeController extends AbstractController
     /**
      * @Route("/delete/{id}", name="_del")
      */
-    public function delete($id, MobilHomeRepository $estRepo): Response {
-        $est = $estRepo->find($id);
+    public function delete($id, MobileHomeRepository $repo): Response {
+        $est = $repo->find($id);
         if ($est == null) {
             $this->addFlash("danger", "El mobilhome no existe.");
         } else {

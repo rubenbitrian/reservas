@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Listado de mobilhomes{% endblock %}
 
 {% block body %}
+    <p><a href="{{ path('admon_estado_add') }}" class="btn btn-primary">Nuevo Mobilhome</a></p>
     <table class="table table-stripped">
         <thead>
         <tr>
             <th>Id</th>
             <th>Nombre</th>
+            <th colspan="2">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -15,6 +17,9 @@
             <tr>
                 <td>{{ item.id }}</td>
                 <td>{{ item.name }}</td>
+                <td><a href="{{ path('admon_mobilhome_edit', {id: item.id}) }}"><i class="bi bi-pencil-fill"></i></a>
+                </td>
+                <td><a href="{{ path('admon_mobilhome_del', {id: item.id}) }}"><i class="bi bi-trash"></i></a></td>
             </tr>
         {% endfor %}
         </tbody>

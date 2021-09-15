@@ -9,9 +9,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-use App\Entity\MobilHome;
+use App\Entity\MobileHome;
 
-class MobilHomeType extends AbstractType {
+class MobileHomeType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $label = $builder->getData()->getId() > 0 ? "Actualizar" : "Crear";
 
@@ -23,6 +23,6 @@ class MobilHomeType extends AbstractType {
     //Metodo recomendable de implementar. Permiete configurar el type
     public function configureOptions(OptionsResolver $resolver) {
         //con el data_class forzamos que las propiedades a mapear pertenezcan a una entidad de tipo data_class
-        $resolver->setDefaults(['data_class' => MobilHome::class, 'csrf_protection' => false]);
+        $resolver->setDefaults(['data_class' => MobileHome::class, 'csrf_protection' => false]);
     }
 }

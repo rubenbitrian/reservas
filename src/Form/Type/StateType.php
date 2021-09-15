@@ -16,7 +16,7 @@ class StateType extends AbstractType {
         $label = $builder->getData()->getId() > 0 ? "Actualizar" : "Crear";
 
         $builder
-            ->add('nombre', TextType::class)
+            ->add('name', TextType::class)
             ->add('save', SubmitType::class, ["label" => "$label"]);
     }
 

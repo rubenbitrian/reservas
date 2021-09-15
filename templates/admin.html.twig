@@ -16,9 +16,10 @@
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                 {% include 'includes/admin/sidebar.html.twig' %}
             </div>
-            <div class="col py-3">
+            <div class="col py-3" style="background-color: #F5F5F5">
                 {% block body %}
                 {% endblock body %}
+                {% include 'includes/admin/footer.html.twig' %}
             </div>
         </div>
     </div>

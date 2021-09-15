@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="Add CRUD State">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/admin/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/admin/sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mobile_home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mobile_home/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +198,7 @@
       <workItem from="1631610304386" duration="477000" />
       <workItem from="1631611130223" duration="1312000" />
       <workItem from="1631612465227" duration="7819000" />
-      <workItem from="1631628596996" duration="13196000" />
+      <workItem from="1631628596996" duration="13562000" />
     </task>
     <task id="LOCAL-00001" summary="Add CRUD State">
       <created>1631691766203</created>

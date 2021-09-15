@@ -18,6 +18,15 @@
             </div>
             <div class="col py-3" style="background-color: #F5F5F5">
                 {% block body %}
+                    {% block mensajes %}
+                        {% for label, values in app.flashes %}
+                            <div class="alert alert-{{ label }}">
+                                {% for msg in values %}
+                                    <p> {{ msg }} </p>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    {% endblock %}
                 {% endblock body %}
                 {% include 'includes/admin/footer.html.twig' %}
             </div>

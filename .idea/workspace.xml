@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="Add CRUD State">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mobile_home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mobile_home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/state/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/state/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,13 +168,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/mobil_home" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\reservas\templates\mobil_home" />
+      <recent name="C:\xampp\htdocs\reservas\src\Form\Type" />
+      <recent name="C:\xampp\htdocs\reservas\templates" />
       <recent name="C:\xampp\htdocs\reservas" />
     </key>
   </component>
@@ -196,7 +200,7 @@
       <workItem from="1631610304386" duration="477000" />
       <workItem from="1631611130223" duration="1312000" />
       <workItem from="1631612465227" duration="7819000" />
-      <workItem from="1631628596996" duration="6188000" />
+      <workItem from="1631628596996" duration="13867000" />
     </task>
     <task id="LOCAL-00001" summary="Add CRUD State">
       <created>1631691766203</created>
@@ -217,6 +221,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

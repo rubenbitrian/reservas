@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de mobilhomes{% endblock %}
+
+{% block body %}
+    <table class="table table-stripped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in arr %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

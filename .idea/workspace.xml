@@ -2,7 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="Add CRUD State">
+      <change afterPath="$PROJECT_DIR$/materiales/apple-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/aragon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/camping_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/camping_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/camping_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/camping_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/camping_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/flecha_arriba.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/mobilhome_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/prueba.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/prueba.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/IMG_0002 (1).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/IMG_0003 (1).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/apple-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/aragon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/camping_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/camping_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/camping_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/camping_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/camping_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/camping_6.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/flecha_arriba.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/fonda.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/font.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/guadalupe.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/mobilhome_9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/Type/UserGroupType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materiales/img.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserGroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserGroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/contenido.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/contenido.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +207,26 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/hwi/oauth-bundle" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/php-http/stopwatch-plugin" />
+      <path value="$PROJECT_DIR$/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message" />
+      <path value="$PROJECT_DIR$/vendor/php-http/logger-plugin" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug-bundle" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/vendor/php-http/discovery" />
+      <path value="$PROJECT_DIR$/vendor/php-http/client-common" />
+      <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
     </include_path>
   </component>
   <component name="ProjectId" id="1y7cDwuHWKZXXenLBMBwSimzMUZ" />
@@ -199,6 +276,7 @@
       <workItem from="1631611130223" duration="1312000" />
       <workItem from="1631612465227" duration="7819000" />
       <workItem from="1631628596996" duration="15965000" />
+      <workItem from="1631773697295" duration="5090000" />
     </task>
     <task id="LOCAL-00001" summary="Add CRUD State">
       <created>1631691766203</created>
@@ -230,6 +308,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

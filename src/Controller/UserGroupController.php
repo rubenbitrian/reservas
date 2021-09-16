@@ -23,7 +23,7 @@ class UserGroupController extends AbstractController
     }
 
     /**
-     * @Route("/admin/user/delete/{id}", name="categoria_delete")
+     * @Route("/admin/user/group/delete/{id}", name="categoria_delete")
      */
     public function eliminar($id, UserGroupRepository $userGroupRepositorio)
     {

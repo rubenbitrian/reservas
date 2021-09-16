@@ -4,7 +4,7 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <li class="nav-item">
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="{{ path('default') }}" class="nav-link align-middle px-0">
                     <i class="fs-4 text-white bi-house"></i> <span class="ms-1 d-none text-white d-sm-inline">Home</span>
                 </a>
             </li>
@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="{# { path('admon_reservas') }#}" class="nav-link px-0 align-middle">
                     <i class="fs-4 text-white bi-table"></i> <span class="ms-1 d-none text-white d-sm-inline">Reservas</span></a>
             </li>
             <li>
@@ -22,11 +22,11 @@
                     <i class="fs-4 text-white bi-stoplights"></i> <span class="ms-1 d-none text-white d-sm-inline">Estados</span> </a>
             </li>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="{# }{ path('admon_usuarios') }#}" class="nav-link px-0 align-middle">
                     <i class="fs-4 text-white bi-person"></i> <span class="ms-1 d-none text-white d-sm-inline">Usuarios</span> </a>
             </li>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="{# { path('admon_grupos') }#}" class="nav-link px-0 align-middle">
                     <i class="fs-4 text-white bi-people"></i> <span class="ms-1 d-none text-white d-sm-inline">Grupos de usuarios</span> </a>
             </li>
         </ul>
@@ -37,11 +37,11 @@
                 <span class="d-none d-sm-inline mx-1">loser</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{# { path('usuario_perfil') }#}">Perfil</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                <li><a class="dropdown-item" href="{# { path('logout') }#}">Salir</a></li>
             </ul>
         </div>
     </div>

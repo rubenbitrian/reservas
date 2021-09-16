@@ -18,3 +18,8 @@ div.carousel-caption {
   img{
     object-fit: cover;
   }
+img.card-img-top:hover {filter: grayscale(80%);}
+img.rounded:hover {
+  -webkit-transform:scale(1.1);transform:scale(1.1);
+}
+

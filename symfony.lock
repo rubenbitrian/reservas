@@ -91,12 +91,6 @@
     "laminas/laminas-code": {
         "version": "4.4.2"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.4.0"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.4.0"
-    },
     "monolog/monolog": {
         "version": "2.3.2"
     },
@@ -593,7 +587,10 @@
             "branch": "master",
             "version": "1.1",
             "ref": "0c643e17b5340747b35c2c75e11727fa31bfa9bb"
-        }
+        },
+        "files": [
+            "./config/routes/calendar.yaml"
+        ]
     },
     "theseer/tokenizer": {
         "version": "1.2.1"

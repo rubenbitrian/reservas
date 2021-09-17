@@ -1,10 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Administrador de estados{% endblock %}
 
 {% block body %}
-<h1>Formulario de estado</h1>
-{{ form(form) }}
-<a class="btn btn-primary mb-3" href="{{ path('admon_estado') }}">Volver</a>
+    <h1>Formulario de estado</h1>
+    {{ form(form) }}
+    <a class="btn btn-primary mb-3" href="{{ path('admon_estado') }}">Volver</a>
 
 {% endblock %}

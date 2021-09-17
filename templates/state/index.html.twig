@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Estados de las reservas{% endblock %}
 
 {% block body %}
+    <p><a href="{{ path('admon_estado_add') }}" class="btn btn-primary">Nuevo estado</a></p>
     <table class="table table-stripped">
         <thead>
         <tr>
             <th>Id</th>
             <th>Estado</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -15,6 +17,10 @@
             <tr>
                 <td>{{ item.id }}</td>
                 <td>{{ item.name }}</td>
+                <td>
+                    <a href="{{ path('admon_estado_edit', {id: item.id}) }}"><i class="bi bi-pencil-fill"></i></a>&nbsp;&nbsp;
+                    <a href="{{ path('admon_estado_del', {id: item.id}) }}"><i class="bi bi-trash"></i></a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

@@ -29,9 +29,15 @@ class State
      */
     private $bokings;
 
+    
     public function __construct()
     {
         $this->bokings = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int

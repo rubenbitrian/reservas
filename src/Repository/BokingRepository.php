@@ -47,4 +47,18 @@ class BokingRepository extends ServiceEntityRepository
         ;
     }
     */
+   public function reservas()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT user_group.name as grupo,color,boking.start_date,boking.end_date,mobile_home.name as home ,state.name as estado
+        FROM boking,user_group,user,state,mobile_home
+        where user_group_id=user_group.id and state_id=state.id and mobile_home.id=mobile_home_id and user.id=boking.user_id';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
+
+    }
 }

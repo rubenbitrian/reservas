@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservar!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form>
+        <h1>Reservar </h1>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="startButton">Desde:</label><br>
+                <input type="text" id="startButton" class=".startDatePicker col-md-12"/>
+            </div>
+            <div class="col-md-6">
+                <label for="endButton">Hasta:</label><br>
+                <input type="text" id="endButton" class=".endDatePicker col-md-12"/>
+            </div>
+            <input type="submit" value="Reservar" id="resButton" class="btn btn-info col-md-12">   
+        </div>
+    </form> 
+</div>
+    
+{% endblock %}

@@ -3,18 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\UserGroup;
+use App\Form\Type\UserGroupType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserGroupRepository;
-use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+/**
+ * @Route("/admin/grupos", name="admon_grupos")
+ */
 class UserGroupController extends AbstractController
 {
     /**
-     * @Route("/admin/user/group", name="user_group")
+     * @Route("/", name="")
      */
     public function index(UserGroupRepository $userGroupRepositorio): Response
     {
@@ -27,7 +30,7 @@ class UserGroupController extends AbstractController
     }
 
     /**
-     * @Route("/admin/user/group/delete/{id}", name="user_group_delete")
+     * @Route("/delete/{id}", name="_del")
      */
     public function eliminar($id, UserGroupRepository $userGroupRepositorio)
     {
@@ -35,13 +38,13 @@ class UserGroupController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($userGroup);
         $entityManager->flush();
-        return $this->redirectToRoute("user");
+        return $this->redirectToRoute("admon_grupos");
     }
      /**
-     * @Route("/admin/user/group/add", name="usergroup_add")
-     * @Route("/admin/user/group/edit/{id}", name="usergroup_edit")
+     * @Route("/add", name="_add")
+     * @Route("/edit/{id}", name="_edit")
      */
-    public function edit($id = 0, UserGroupRepository $userGroupRepositorio, Request $request, SluggerInterface $slugger)
+    public function edit($id = 0, UserGroupRepository $userGroupRepositorio, Request $request)
     {
 
         $usergroup = new UserGroup();
@@ -49,7 +52,7 @@ class UserGroupController extends AbstractController
             $usergroup = $userGroupRepositorio->find($id);
             if ($usergroup == null) {
                 //flash error
-                return $this->redirectToRoute("user");
+                return $this->redirectToRoute("admon_grupos");
             }
         }
         $form = $this->createForm(UserGroupType::class, $usergroup);
@@ -59,17 +62,13 @@ class UserGroupController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $usergroup = $form->getData(); //para mostrar los datos enviados
 
-            if ($usergroup->getSlug() == null || $usergroup->getSlug() == "") {
-                $usergroup->setSlug(\strtolower($usergroup->slug($usergroup->getName())));
-            }
-
             $this->getDoctrine()->getManager()->persist($usergroup);
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute("user");
+            return $this->redirectToRoute("admon_grupos");
         }
 
         return $this->render('user_group/edit.html.twig', [
-            'frmCategoria' => $form->createView(),
+            'frmUserGroup' => $form->createView(),
             'usergroup' => $usergroup,
         ]);
     }

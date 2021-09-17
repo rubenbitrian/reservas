@@ -26,9 +26,9 @@ security:
             oauth:
                 resource_owners:
                     auth0: "/auth0/callback"
-                login_path: /
+                login_path: /login
                 failure_path: /
-                default_target_path: /list
+                default_target_path: /
                 oauth_user_provider:
                     service: hwi_oauth.user.provider
             guard:
@@ -50,5 +50,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

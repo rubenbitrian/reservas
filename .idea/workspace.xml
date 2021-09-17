@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="Add CRUD State">
-      <change afterPath="$PROJECT_DIR$/materiales/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/client_secret_133503232576-83k573jbl0mjn97bugv8gtrg7p9tn1tp.apps.googleusercontent.com.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/materiales/datos_auth0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/admin/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/admin/sidebar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mobile_home/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mobile_home/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mobile_home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mobile_home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/state/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/state/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,13 +191,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/mobil_home" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\reservas\.idea" />
       <recent name="C:\xampp\htdocs\reservas\templates\mobil_home" />
       <recent name="C:\xampp\htdocs\reservas\src\Form\Type" />
       <recent name="C:\xampp\htdocs\reservas\templates" />
@@ -225,7 +225,7 @@
       <workItem from="1631611130223" duration="1312000" />
       <workItem from="1631612465227" duration="7819000" />
       <workItem from="1631628596996" duration="15965000" />
-      <workItem from="1631773697295" duration="9174000" />
+      <workItem from="1631773697295" duration="13543000" />
     </task>
     <task id="LOCAL-00001" summary="Add CRUD State">
       <created>1631691766203</created>

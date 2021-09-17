@@ -29,6 +29,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $apellidos;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -55,6 +65,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     */
+    public function setNombre($nombre): string
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * @param string $apellidos
+     */
+    public function setApellidos($apellidos): string
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
@@ -74,7 +120,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -82,7 +128,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**

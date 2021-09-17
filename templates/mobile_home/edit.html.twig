@@ -3,8 +3,12 @@
 {% block title %}Administrador de mobilhomes{% endblock %}
 
 {% block body %}
-    <h1>Formulario de mobilhomes</h1>
-    {{ form(form) }}
-    <a class="btn btn-primary mb-3" href="{{ path('admon_mobilhome') }}">Volver</a>
+    <div class="container">
+        <div class="row">
+            <h1>Formulario de mobilhomes</h1>
+            {{ form(form) }}
+            <a class="btn btn-primary btn-sm" href="{{ path('admon_mobilhome') }}">Volver</a>
+        </div>
+    </div>
 
 {% endblock %}

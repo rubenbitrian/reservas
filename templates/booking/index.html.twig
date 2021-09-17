@@ -1,0 +1,46 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Reservas{% endblock %}
+
+{% block body %}
+    <h1>Reservas</h1>
+
+    <a href="{{ path('booking_add') }}" class="btn btn-success float-end">Nueva reserva</a>
+
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Familia</th>
+                        <th scope="col">Mobil Home</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Entrada</th>
+                        <th scope="col">Salida</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for boking in bokings %}
+                        <tr>
+                            <th scope="row">{{ boking.id }}</th>
+                            <td scope="col">{{ boking.user}}</td>
+                            <td scope="col">{{ boking.user.userGroup}}</td>
+                            <td scope="col">{{ boking.mobilehome }}</td>
+                            <td scope="col">{{ boking.state }}</td>
+                            <td scope="col">{{ boking.startDate | date("d/m/Y") }}</td>
+                            <td scope="col">{{ boking.endDate | date("d/m/Y") }}</td>
+                            <td scope="col">
+                                <a href="{{ path('booking_view', {id: boking.id}) }}">View</a>
+                                <a href="{{ path('booking_edit', {id: boking.id}) }}">Edit</a>
+                                <a href="{{ path('booking_delete', {id: boking.id}) }}">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

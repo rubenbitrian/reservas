@@ -1,0 +1,10 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Reservas{% endblock %}
+
+{% block body %}
+    <h1>Reserva del {{ boking.startDate | date("d/m/Y") }} al {{ boking.endDate | date("d/m/Y") }}</h1>
+    <h3>Reserva para:</h3>
+    <p>Usuario: {{ boking.user }} <br> Familia: {{ boking.user.userGroup }}</p>
+    <h4>Apartamento: {{ boking.mobileHome }}</h4>
+{% endblock %}

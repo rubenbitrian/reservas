@@ -244,7 +244,12 @@ class BookingController extends AbstractController
     }
 
     private function formatDate($date) {
-        $porciones = explode("/", $date);
-        return $porciones[2] .'-'. $porciones[1] .'-'. $porciones[0];
+        $pos = strpos($date, '-');
+        if ($pos === false) {
+            $porciones = explode("/", $date);
+            return $porciones[2] .'-'. $porciones[1] .'-'. $porciones[0];
+        }
+        return $date;
+
     }
 }

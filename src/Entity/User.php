@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-//$2y$13$JMCQs7XbrID8bT5vqK1j4.dstlBbUNnFtlLkE9l/A2tHorYZ.6LJG
+//$2y$13$rEmuKfXhlxMnsGF2A1D.IeI8Uh3UCJRMimMVtceT2kEOl0HzzP696
+//admin1234
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)

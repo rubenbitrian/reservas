@@ -12,13 +12,13 @@ class CalendarSubscriber implements EventSubscriberInterface
 {
     private $boking;
 
-    public function __construct(BokingRepository $boking) {
+    public function __construct(BokingRepository $boking)
+    {
         $this->boking = $boking;
-      
     }
 
-    
-    public static function getSubscribedEvents( )
+
+    public static function getSubscribedEvents()
     {
         return [
             CalendarEvents::SET_DATA => 'onCalendarSetData',
@@ -40,26 +40,25 @@ class CalendarSubscriber implements EventSubscriberInterface
             $datosBooking = $row;
             $fechaInicio = explode('-', $datosBooking['start_date']);
             $fechaFin = explode('-', $datosBooking['end_date']);
+
+            $fin = $fechaFin[2] + 1;
+
+            $evento = new Event(
+                $datosBooking['grupo'].'-'. $datosBooking['home'].'-'. $datosBooking['estado'],
+                new \DateTime($fechaInicio[0] . '-' . $fechaInicio[1] . '-' . $fechaInicio[2]),
+                new \DateTime($fechaFin[0] . '-' . $fechaFin[1] . '-' . $fin)
+
+            );
+            $evento->setOptions([
+                'backgroundColor' =>  '#'.$datosBooking['color'],
+                'borderColor' => '#'.$datosBooking['color'],
+
+            ]);
+
+
+
+            $calendar->addEvent($evento);
         }
-
-        $fin = $fechaFin[2]+1;
-
-        $evento = new Event(
-            $datosBooking['name'],
-            new \DateTime($fechaInicio[0].'-'.$fechaInicio[1].'-'.$fechaInicio[2]),
-            new \DateTime($fechaFin[0].'-'.$fechaFin[1].'-'.$fin)
-
-        );
-        $evento->setOptions([
-            'backgroundColor' => 'red',
-            'borderColor' => '#' . $datosBooking['color'],
-            'contentHeight' => 1300,
-
-        ]);
-        
-      
-
-        $calendar->addEvent($evento);
     }
             
 
@@ -73,8 +72,7 @@ class CalendarSubscriber implements EventSubscriberInterface
         
       
 
-        //SELECT user_group.name,color,boking.start_date,boking.end_date FROM boking,user_group,user,state where user_group_id=user_group.id and state_id=state.id
-
+        //SELECT user_group.name as grupo,color,boking.start_date,boking.end_date,mobile_home.name as home ,state.name as estado FROM boking,user_group,user,state,mobile_home where user_group_id=user_group.id and state_id=state.id and mobile_home.id=mobile_home_id and user.id=boking.user_id
       
 /*
         $evento1->setOptions([

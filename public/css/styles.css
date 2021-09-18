@@ -20,6 +20,9 @@ div.carousel-caption {
   }
 img.card-img-top:hover {filter: grayscale(80%);}
 img.rounded:hover {
-  -webkit-transform:scale(1.1);transform:scale(1.1);
+  -webkit-transform:scale(1.05);transform:scale(1.05);
 }
 
+#resButton{
+  margin-top: 20px;
+}

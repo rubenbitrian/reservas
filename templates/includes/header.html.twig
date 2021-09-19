@@ -3,11 +3,17 @@
       <ul class="nav me-auto">
         <li class="nav-item"><a href="/" class="nav-link link-light px-2 active" aria-current="page">Inicio</a></li>
         <li class="nav-item"><a href="#" class="nav-link link-light px-2">Contacto</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-light px-2">Admin reservas</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item"><a href="{{ path('admon_mobilhome') }}" class="nav-link link-light px-2">Admin reservas</a></li>
+        {% endif %}
       </ul>
       <ul class="nav">
-        <li class="nav-item"><a href="#" class="nav-link link-light px-2">Login</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-light px-2">Sign up</a></li>
+      {% if not (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
+        <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link link-light px-2">Entra</a></li>
+        <li class="nav-item"><a href="{{ path('registration') }}" class="nav-link link-light px-2">Regístrate</a></li>
+      {% else %}
+        <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link link-light px-2">Desconectarse</a></li>
+      {% endif %}
       </ul>
     </div>
 </nav>

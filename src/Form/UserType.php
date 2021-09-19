@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Form\Type\UserGroupType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -24,6 +26,11 @@ class UserType extends AbstractType
                 'first_options' => ['label' => 'Contraseña'],
                 'second_options' => ['label' => 'Confirmar contraseña']
             ])
+            ->add('user_group', EntityType::class, array(
+                'class' => 'App\Entity\UserGroup',
+                'choice_label' => 'name',
+                'choice_value' => 'id',
+                'label' => 'Grupo'))
         ;
     }
 

@@ -76,7 +76,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param string $nombre
      */
-    public function setNombre($nombre): string
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
 
@@ -94,7 +94,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param string $apellidos
      */
-    public function setApellidos($apellidos): string
+    public function setApellidos($apellidos)
     {
         $this->apellidos = $apellidos;
 
@@ -118,7 +118,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @see UserInterface
      */
-    public function getUserIdentifier(): string
+    public function getUserIdentifier()
     {
         return (string)$this->email;
     }
@@ -138,7 +138,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }

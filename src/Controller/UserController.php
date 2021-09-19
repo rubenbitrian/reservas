@@ -72,4 +72,18 @@ class UserController extends AbstractController
             'user' => $user,
         ]);
     }
+
+    /**
+    * @Route("/habilitar", name="_habilitar")
+    */
+    public function habilitar(){
+
+    }
+
+    /**
+     * @Route("/deshabilitar", name="_deshabilitar")
+     */
+    public function deshabilitar(){
+
+    }
 }

@@ -74,11 +74,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param string $nombre
+     * @param string $name
      */
     public function setName($name)
     {
-        $this->nombre = $name;
+        $this->name = $name;
 
         return $this;
     }
@@ -92,7 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param string $apellidos
+     * @param string $surnames
      */
     public function setSurnames($surnames)
     {

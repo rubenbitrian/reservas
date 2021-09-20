@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\SignUpRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +22,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registro", name="registro")
      */
-    public function index(Request $request)
+    public function index(Request $request, SignUpRepository $repo)
     {
         $user = new User();
 
@@ -52,8 +53,11 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        $registro = $repo->find(1);
+
         return $this->render('registration/index.html.twig', [
             'form' => $form->createView(),
+            'registro' => $registro,
         ]);
     }
 }

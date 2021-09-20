@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\SignUp;
+use App\Entity\SingUp;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,6 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
+<<<<<<< HEAD
+=======
+use App\Repository\SignUpRepository;
+use Symfony\Component\String\Slugger\SluggerInterface;
+>>>>>>> 64d84cac4b8204fc9c2d37c563fa96f1d72ad824
 
 /**
  * @Route("/admin/usuarios", name="admon_usuarios")
@@ -75,14 +82,16 @@ class UserController extends AbstractController
     /**
     * @Route("/habilitar", name="_habilitar")
     */
-    public function habilitar(){
+    public function habilitar(SignUpRepository $repo){
 
-    }
-
-    /**
-     * @Route("/deshabilitar", name="_deshabilitar")
-     */
-    public function deshabilitar(){
-
+        $registro = $repo->find(1);//0 es el id
+        if($registro->getEnable() == false){
+            $registro->setEnable(true);
+        }else{
+            $registro->setEnable(false);
+        }
+        $this->getDoctrine()->getManager()->persist($registro);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute("admon_usuarios");
     }
 }

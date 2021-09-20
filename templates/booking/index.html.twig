@@ -25,11 +25,17 @@
                 <tbody>
                     {% for boking in bokings %}
                         <tr>
-                            <th scope="row">{{ boking.id }}</th>
+                            <th scope="row" class='id'>{{ boking.id }}</th>
                             <td scope="col">{{ boking.user}}</td>
                             <td scope="col">{{ boking.user.userGroup}}</td>
                             <td scope="col">{{ boking.mobilehome }}</td>
-                            <td scope="col">{{ boking.state }}</td>
+                            <td scope="col">
+                                <select name="state" class="form-select form-select-sm stateSelector" >
+                                    {% for state in states %}
+                                        <option value="{{ state.id }}" {% if state.id == boking.state.id %}selected{% endif %}>{{ state.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
                             <td scope="col">{{ boking.startDate | date("d/m/Y") }}</td>
                             <td scope="col">{{ boking.endDate | date("d/m/Y") }}</td>
                             <td scope="col">
@@ -43,4 +49,9 @@
             </table>
         </div>
     </div>
+{% endblock %}
+{% block specific_scripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{asset('js/state-switch.js')}}"></script>
 {% endblock %}

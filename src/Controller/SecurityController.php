@@ -32,19 +32,28 @@ class SecurityController extends AbstractController
             $lst = $repo->findAll();
 
             foreach($lst as $user){
-                if ($user->getUserIdentifier() == $lastUsername){
-                    $currentUser = $user;
+                
+
+                if($user->getUserIdentifier() == $user ){//Si está como registro en la base de datos
+                    if ($user->getUserIdentifier() == $lastUsername){
+                        $currentUser = $user;
+                    }
                 }
             }
-            //En la entidad User el método getRoles() no debe meter al array el ro lde usuario
+            //En la entidad User el método getRoles() no debe meter al array el rol de usuario
             if($currentUser->getRoles() == array('ROLE_ADMIN')){
                 return $this->redirectToRoute('admon_mobilhome');
-            }else{
-                return $this->redirectToRoute('default');
+            }else{//Si tiene rol usuario va a la principal
+                if($currentUser->getRoles() == array('ROLE_USER')){
+                    return $this->redirectToRoute('default');
+                }else{//Si no entra porque no existe el usuario o no tiene rol
+                    //return $this->redirectToRoute('app_login');
+                    return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+                }
             }
         }
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        //return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**

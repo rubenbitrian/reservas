@@ -15,9 +15,11 @@
                 <tr>
                 <th scope="row">{{item.id}}</th>
                 <td>{{item.name}}</td>
-                 <td>{{item.color}}</td>
-                <td> <a class="btn btn-primary" href="{{path('admon_grupos_edit', {id: item.id})}}">Modificar</a><td>
-                <td> <a class="btn btn-primary" href="{{path('admon_grupos_del', {id: item.id})}}">Eliminar</a><td>
+                <td>{{item.color}}</td>
+                <td> 
+                    <a class="btn btn-primary" href="{{path('admon_grupos_edit', {id: item.id})}}">Modificar</a>
+                    <a class="btn btn-primary" href="{{path('admon_grupos_del', {id: item.id})}}">Eliminar</a>
+                </td>
                 </tr>               
             {% endfor %}
         </tbody>

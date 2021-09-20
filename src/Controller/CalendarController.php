@@ -10,11 +10,11 @@ use App\Services\Mail;
 class CalendarController extends AbstractController
 {
     /**
-     * @Route("/calendar", name="calendar")
+     * @Route("/admin", name="calendar")
      */
     public function index(Mail $sendmail): Response
     {
-        $sendmail->mail('email@gmail.com','asunto','mensaje');
+        // $sendmail->mail('email@gmail.com','asunto','mensaje');
         
         return $this->render('calendar/index.html.twig', [
             'controller_name' => 'CalendarController',

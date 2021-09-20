@@ -14,7 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
-
 /**
  * FOSJsRouting doc: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle/tree/master/Resources/doc
  */
@@ -39,7 +38,10 @@ class BookingController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Boking::class);
 
-        $bokings = $repository->findAll();
+        $bokings = $repository->findBy(
+            [],
+            ['id' => 'DESC']
+        );
 
         return $this->render('booking/index.html.twig', [
             'bokings' => $bokings
@@ -84,20 +86,25 @@ class BookingController extends AbstractController
     /**
      * @Route("/reservar", name="reservar",  options={"expose"=true})
      */
-    public function reservar(Request $request, UserInterface $user) {
+    public function reservar(Request $request) {
         $boking = new Boking();
 
         $form = $this->createForm(BokingType::class, $boking);
+        // Creamos bien la reserva
         if ($request->request->get('boking')) {
             $postData = $request->request->get('boking');
             $postData['startDate'] = $this->formatDate($postData['startDate']); 
             $postData['endDate'] = $this->formatDate($postData['endDate']); 
-            $postData['user'] = $this->security->getUser('id');
+            $userId = $this->security->getUser()->getId();
+            if(!empty($userId)) {
+                $postData['user'] = $userId;
+            }
             $postData['state'] = 1;
             $postData['mobileHome'] = 1;
             $request->request->set('boking', $postData);
         }
         $form->handleRequest($request);
+        // Comporbamos y guardamos la reserva
         if ($form->isSubmitted() && $form->isValid()) {
             if ($postData['startDate'] >= $postData['endDate']) {
                 $this->addFlash('error', 'No puedes poner la fecha de inicio inferior a la de fecha final.');
@@ -113,7 +120,7 @@ class BookingController extends AbstractController
 
         $fechasPilladas = $this->getDatesFromRangeToDatepicker('d/m/Y'); 
 
-        return $this->render('booking/add.html.twig', [
+        return $this->render('booking/reservar.html.twig', [
             'form' => $form->createView(),
             'fechasPilladas' => $fechasPilladas
         ]);

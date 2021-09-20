@@ -19,7 +19,7 @@ div.carousel-caption {
     object-fit: cover;
   }
 img.card-img-top:hover {filter: grayscale(80%);}
-img.rounded:hover {
+#img_ancha:hover {
   -webkit-transform:scale(1.05);transform:scale(1.05);
 }
 

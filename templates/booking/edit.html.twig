@@ -1,0 +1,22 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Reservas{% endblock %}
+{% block stylesheet %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+    <h1>Editar reserva</h1>
+    {{ form(form) }}
+{% endblock %}
+{% block specific_scripts %}
+    <script>
+        var dateArr = JSON.parse('{{ fechasPilladas | json_encode | raw }}');
+    </script>
+    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{asset('js/calendar-script.js')}}"></script>
+    <script src="{{asset('js/datepicker-reservas.js')}}"></script>
+
+{% endblock %}

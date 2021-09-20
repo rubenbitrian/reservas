@@ -23,7 +23,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request, GuardAuthenticatorHandler $guardHandler,  AuthenticatorInterface $authenticator)
+    public function index(Request $request)
     {
         $user = new User();
 
@@ -42,13 +42,14 @@ class RegistrationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
+            /*
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
                 $authenticator,
                 'main' // firewall name in security.yaml
             );
+            */
 
             return $this->redirectToRoute('app_login');
         }

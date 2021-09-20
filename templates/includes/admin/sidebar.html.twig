@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li>
-                <a href="{# { path('admon_reservas') }#}" class="nav-link px-0 align-middle">
+                <a href="{{ path('booking') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 text-white bi-table"></i> <span class="ms-1 d-none text-white d-sm-inline">Reservas</span></a>
             </li>
             <li>
@@ -22,11 +22,11 @@
                     <i class="fs-4 text-white bi-stoplights"></i> <span class="ms-1 d-none text-white d-sm-inline">Estados</span> </a>
             </li>
             <li>
-                <a href="{# }{ path('admon_usuarios') }#}" class="nav-link px-0 align-middle">
+                <a href="{{ path('admon_usuarios') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 text-white bi-person"></i> <span class="ms-1 d-none text-white d-sm-inline">Usuarios</span> </a>
             </li>
             <li>
-                <a href="{# { path('admon_grupos') }#}" class="nav-link px-0 align-middle">
+                <a href="{{ path('admon_grupos') }}" class="nav-link px-0 align-middle">
                     <i class="fs-4 text-white bi-people"></i> <span class="ms-1 d-none text-white d-sm-inline">Grupos de usuarios</span> </a>
             </li>
         </ul>
@@ -41,7 +41,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="{# { path('logout') }#}">Salir</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_logout') }}">Salir</a></li>
             </ul>
         </div>
     </div>

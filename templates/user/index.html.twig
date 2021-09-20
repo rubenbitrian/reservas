@@ -1,0 +1,33 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Gestion de usuarios!{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 fst-italic text-center">Usuarios</h1>
+        <table class="table table-primary table-striped">
+        <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Grupo</th>
+        <th>E-mail</th>
+        <th>Acciones</th>
+        <tbody>
+            {% for item in lst %}
+                <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.apellidos}}, {{item.nombre}}</td>
+                <td>{{item.userGroup.name}}</td>
+                <td>{{item.email}}</td>
+                <td> 
+                    <a class="btn btn-primary" href="{{path('admon_usuarios_edit', {id: item.id})}}">Modificar</a>
+                    <a class="btn btn-primary" href="{{path('admon_usuarios_del', {id: item.id})}}">Eliminar</a>
+                </td>
+                </tr>               
+            {% endfor %}
+        </tbody>
+        </table>
+        <a class="btn btn-primary" href="{{path('admon_usuarios_edit')}}">Crear usuario</a>
+
+        <a class="btn btn-primary" href="{{path('admon_usuarios_habilitar')}}">Habilitar Registro</a>
+
+{% endblock %}

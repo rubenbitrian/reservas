@@ -1,0 +1,12 @@
+.datepicker {
+    width: 20%;
+}
+
+.datepicker-switch {
+    width: 100% !important;
+}
+
+.disabled-date {
+    background-color: rgb(255, 101, 101) !important;
+    color: black !important;
+}

@@ -1,20 +1,26 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Hello UserGroupController!{% endblock %}
+{% block title %}Gestion de grupos!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/color/Desktop/Metodologias agiles/mobile_home/src/Controller/UserGroupController.php'|file_link(0) }}">src/Controller/UserGroupController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/color/Desktop/Metodologias agiles/mobile_home/templates/user_group/index.html.twig'|file_link(0) }}">templates/user_group/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1 class="display-4 fst-italic text-center">Grupos</h1>
+        <table class="table table-primary table-striped">
+        <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Color</th>
+        <th>Acciones</th>
+        <tbody>
+            {% for item in lst %}
+                <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.name}}</td>
+                 <td>{{item.color}}</td>
+                <td> <a class="btn btn-primary" href="{{path('admon_grupos_edit', {id: item.id})}}">Modificar</a><td>
+                <td> <a class="btn btn-primary" href="{{path('admon_grupos_del', {id: item.id})}}">Eliminar</a><td>
+                </tr>               
+            {% endfor %}
+        </tbody>
+        </table>
+        <a class="btn btn-primary" href="{{path('admon_grupos_edit')}}">Crear grupo</a>
 {% endblock %}

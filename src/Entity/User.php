@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-//$2y$13$JMCQs7XbrID8bT5vqK1j4.dstlBbUNnFtlLkE9l/A2tHorYZ.6LJG
+//$2y$13$rEmuKfXhlxMnsGF2A1D.IeI8Uh3UCJRMimMVtceT2kEOl0HzzP696
+//admin1234
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -28,6 +29,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $surnames;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -44,9 +55,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $userGroup;
 
+    public function __toString()
+    {
+        return $this->email;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * @param string $apellidos
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -66,9 +118,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @see UserInterface
      */
-    public function getUserIdentifier(): string
+    public function getUserIdentifier()
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -76,7 +128,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -86,7 +138,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }

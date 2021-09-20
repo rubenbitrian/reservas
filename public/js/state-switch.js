@@ -1,6 +1,7 @@
 $('.stateSelector').change(function(e) {
-    var stateId = $(this).find('option:selected').val();
-    var bookingId = $(this).parent().siblings(":first").text();
+    var selector = $(this);
+    var stateId = selector.find('option:selected').val();
+    var bookingId = selector.parent().siblings(":first").text();
     $.ajax({
         // En data puedes utilizar un objeto JSON, un array o un query string
         data: {
@@ -16,10 +17,14 @@ $('.stateSelector').change(function(e) {
     })
     .done(function( data, textStatus, jqXHR ) {
         if(data) {
-
-        } 
+            selector.removeClass('is-invalid');
+            selector.addClass('is-valid');
+        } else {
+            selector.removeClass('is-valid');
+            selector.addClass('is-invalid');
+        }
     })
     .fail(function( jqXHR, textStatus, errorThrown ) {
-
+        alert('Erroraco, te toca arreglar.');
     });
 })

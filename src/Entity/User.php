@@ -31,12 +31,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180)
      */
-    private $nombre;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=200)
      */
-    private $apellidos;
+    private $surnames;
 
     /**
      * @ORM\Column(type="json")

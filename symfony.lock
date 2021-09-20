@@ -599,6 +599,18 @@
             "./config/routes/calendar.yaml"
         ]
     },
+    "theseer/tokenizer": {
+        "version": "1.2.1"
+    },
+    "twig/extra-bundle": {
+        "version": "v3.3.3"
+    },
+    "twig/twig": {
+        "version": "v3.3.3"
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
+    },
     "willdurand/jsonp-callback-validator": {
         "version": "v1.1.0"
     }

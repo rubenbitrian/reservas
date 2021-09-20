@@ -68,17 +68,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return string
      */
-    public function getNombre()
+    public function getName()
     {
-        return $this->nombre;
+        return $this->name;
     }
 
     /**
      * @param string $nombre
      */
-    public function setNombre($nombre)
+    public function setName($name)
     {
-        $this->nombre = $nombre;
+        $this->nombre = $name;
 
         return $this;
     }
@@ -86,17 +86,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return string
      */
-    public function getApellidos()
+    public function getSurnames()
     {
-        return $this->apellidos;
+        return $this->surnames;
     }
 
     /**
      * @param string $apellidos
      */
-    public function setApellidos($apellidos)
+    public function setSurnames($surnames)
     {
-        $this->apellidos = $apellidos;
+        $this->surnames = $surnames;
 
         return $this;
     }

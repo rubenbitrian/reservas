@@ -7,6 +7,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+/**
+ * La logica se queda en la BBDD como
+ * { 
+ *      1 => solicitado
+ *      2 => reservado
+ *      3 => calcelado
+ * }
+ */
+
+
+
 /**
  * @ORM\Entity(repositoryClass=StateRepository::class)
  */

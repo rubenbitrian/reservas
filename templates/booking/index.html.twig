@@ -32,7 +32,7 @@
                             <td scope="col">
                                 <select name="state" class="form-select form-select-sm stateSelector" >
                                     {% for state in states %}
-                                        <option value="{{ state.id }}" {% if state.id == boking.state.id %}selected{% endif %}>{{ state.name }}</option>
+                                        <option value="{{ state.id }}" {% if state.id == boking.state.id %}selected{% endif %}>{{ state.name | capitalize }}</option>
                                     {% endfor %}
                                 </select>
                             </td>

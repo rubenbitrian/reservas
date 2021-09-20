@@ -10,7 +10,7 @@
       <ul class="nav">
       {% if not (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
         <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link link-light px-2">Entra</a></li>
-        <li class="nav-item"><a href="{{ path('registration') }}" class="nav-link link-light px-2">Regístrate</a></li>
+        <li class="nav-item"><a href="{{ path('registro') }}" class="nav-link link-light px-2">Regístrate</a></li>
       {% else %}
         <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link link-light px-2">Desconectarse</a></li>
       {% endif %}

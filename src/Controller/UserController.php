@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/admin/usuarios", name="admon_usuarios")

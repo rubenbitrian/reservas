@@ -23,4 +23,13 @@ class pruebareservarController extends AbstractController
             'controller_name' => 'UserGroupgfController',
         ]);
     }
+    /**
+     * @Route("/fin_res", name="fin_res")
+     */
+    public function fin(): Response
+    {
+        return $this->render('reservar/finreservar.html.twig', [
+            'controller_name' => 'UserGroupgfController',
+        ]);
+    }
 }

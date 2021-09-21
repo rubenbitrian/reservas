@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\SignUpRepository;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/admin/usuarios", name="admon_usuarios")

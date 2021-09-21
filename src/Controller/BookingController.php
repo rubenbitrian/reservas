@@ -34,7 +34,7 @@ class BookingController extends AbstractController
        $this->security = $security;
     }
     /**
-     * @Route("/admin/reservas", name="booking")
+     * @Route("/admin/reservas", name="admon_reservas")
      */
     public function index(): Response
     {

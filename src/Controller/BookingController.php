@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Boking;
+use App\Entity\State;
 use App\Form\BokingType;
+use App\Services\Mail;
 use DateInterval;
 use DatePeriod;
 use DateTime;
@@ -43,8 +45,13 @@ class BookingController extends AbstractController
             ['id' => 'DESC']
         );
 
+        $stateRepo = $this->getDoctrine()->getRepository(State::class);
+
+        $states = $stateRepo->findAll('list');
+
         return $this->render('booking/index.html.twig', [
-            'bokings' => $bokings
+            'bokings' => $bokings,
+            'states' => $states
         ]);
     }
 
@@ -86,7 +93,7 @@ class BookingController extends AbstractController
     /**
      * @Route("/reservar", name="reservar",  options={"expose"=true})
      */
-    public function reservar(Request $request) {
+    public function reservar(Request $request, Mail $mailer) {
         $boking = new Boking();
 
         $form = $this->createForm(BokingType::class, $boking);
@@ -113,6 +120,11 @@ class BookingController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($boking);
             $em->flush();
+            $mailer->mail(
+                'rugbyjavier@gmail.com', 
+                'Prueba desde AddReserva', 
+                'Mensaje to wapo pa to kiski'
+            );
             $this->addFlash('success','Tus cambios se han guardado!');
             return $this->redirectToRoute('booking');
         }

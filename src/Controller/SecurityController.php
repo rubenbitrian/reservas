@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\SignUpRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, UserRepository $repo): Response
+    public function login(AuthenticationUtils $authenticationUtils, UserRepository $repo, SignUpRepository $repo2): Response
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -53,7 +54,9 @@ class SecurityController extends AbstractController
             }
         }
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        $registro = $repo2->find(1);
+
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registro' => $registro]);
     }
 
     /**

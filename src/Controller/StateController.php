@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Boking;
 use App\Entity\State;
 use App\Form\Type\StateType;
 use App\Repository\StateRepository;
@@ -9,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/admin/estado", name="admon_estado")
@@ -75,6 +77,31 @@ class StateController extends AbstractController
         }
 
         return $this->redirectToRoute("admon_estado");
+    }
+
+    /**
+     * @Route("/switchState", name="_switchState",  options={"expose"=true})
+     */
+    public function switchState(Request $request, SerializerInterface $serializer, StateRepository $repo) {
+        $est = $repo->find($request->request->get('stateId'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Boking::class)->find($request->request->get('bookingId'));
+
+        if (!$product) {
+            return new Response(
+                $serializer->serialize(false, 'json'), 
+                Response::HTTP_OK
+            );
+        }
+
+        $product->setState($est);
+        $entityManager->flush();
+
+        return new Response(
+            $serializer->serialize(true, 'json'), 
+            Response::HTTP_OK
+        );
     }
 
 }

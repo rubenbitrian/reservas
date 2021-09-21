@@ -17,9 +17,9 @@ class Mail
         $this->emailAdmin = $emailAdmin;
     }
 
-    public function mail($mail = 0, $asunto = "Asunto vacio", $mensaje = "mensaje vacio")
+    public function mail($mail = '', $asunto = "Asunto vacio", $mensaje = "mensaje vacio")
     {
-        if ($mail != 0) {
+        if ($mail != '') {
             $email = (new Email())
                 ->from($this->emailAdmin)
                 ->to($mail)

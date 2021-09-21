@@ -27,7 +27,10 @@
         </tbody>
         </table>
         <a class="btn btn-primary" href="{{path('admon_usuarios_edit')}}">Crear usuario</a>
-
-        <a class="btn btn-primary" href="{{path('admon_usuarios_habilitar')}}">Habilitar Registro</a>
+        {% if registro.enable == 0 %}
+            <a class="btn btn-primary" href="{{path('admon_usuarios_habilitar')}}">Habilitar Registro</a>
+        {% else %}
+            <a class="btn btn-primary" href="{{path('admon_usuarios_habilitar')}}">Deshabilitar Registro</a>
+        {% endif %}
 
 {% endblock %}

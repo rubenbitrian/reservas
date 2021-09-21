@@ -1,5 +1,9 @@
+var url = window.location.href;
 
-$('.endDatepicker').prop( "disabled", true );
+if (!url.includes("edit")) {
+    $('.endDatepicker').prop( "disabled", true );
+}  
+
 $('.startDatepicker').change(function() {
     $('.endDatepicker').prop( "disabled", false );
     $(".endDatepicker").datepicker({

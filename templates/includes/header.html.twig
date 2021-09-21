@@ -4,7 +4,7 @@
         <li class="nav-item"><a href="/" class="nav-link link-light px-2 active" aria-current="page">Inicio</a></li>
         <li class="nav-item"><a href="{{ path('reservar') }}" class="nav-link link-light px-2">Reservar</a></li>
         {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item"><a href="{{ path('admon_mobilhome') }}" class="nav-link link-light px-2">Admin reservas</a></li>
+                <li class="nav-item"><a href="{{ path('calendar') }}" class="nav-link link-light px-2">Admin reservas</a></li>
         {% endif %}
       </ul>
       <ul class="nav">

@@ -3,26 +3,28 @@
 {% block title %}Gestion de grupos!{% endblock %}
 
 {% block body %}
-    <h1 class="display-4 fst-italic text-center">Grupos</h1>
-        <table class="table table-primary table-striped">
+    <p><a href="{{ path('admon_grupos_add') }}" class="btn btn-primary">Nuevo grupo</a></p>
+    <table class="table table-striped table-hover table-primary">
+        <thead>
         <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Color</th>
-        <th>Acciones</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Color</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
         <tbody>
-            {% for item in lst %}
-                <tr>
-                <th scope="row">{{item.id}}</th>
+        {% for item in lst %}
+            <tr>
+                <td>{{ item.id }}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.color}}</td>
-                <td> 
-                    <a class="btn btn-primary" href="{{path('admon_grupos_edit', {id: item.id})}}">Modificar</a>
-                    <a class="btn btn-primary" href="{{path('admon_grupos_del', {id: item.id})}}">Eliminar</a>
+                 <td>{{item.color}}</td>
+                <td>
+                    <a href="{{ path('admon_grupos_edit', {id: item.id}) }}"><i class="bi bi-pencil-fill"></i></a>&nbsp;&nbsp;
+                    <a href="{{ path('admon_grupos_del', {id: item.id}) }}"><i class="bi bi-trash"></i></a>
                 </td>
-                </tr>               
-            {% endfor %}
+                </tr> 
+        {% endfor %}
         </tbody>
-        </table>
-        <a class="btn btn-primary" href="{{path('admon_grupos_edit')}}">Crear grupo</a>
+    </table>
 {% endblock %}

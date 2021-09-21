@@ -22,12 +22,12 @@
         {% for item in bokings %}
             <tr>
                 <td>{{ item.id }}</td>
-                <td>{{item.user}}</td>
-                <td>{{item.user.group}}</td>
-                <td>{{ boking.mobilehome }}</td>
-                <td>{{ boking.state }}</td>
-                <td>{{ boking.startDate | date("d/m/Y") }}</td>
-                <td>{{ boking.endDate | date("d/m/Y") }}</td>
+                <td>{{ item.user }}</td>
+                <td>{{ item.user.userGroup }}</td>
+                <td>{{ item.mobilehome }}</td>
+                <td>{{ item.state }}</td>
+                <td>{{ item.startDate | date("d/m/Y") }}</td>
+                <td>{{ item.endDate | date("d/m/Y") }}</td>
                 <td>
                     <a href="{{ path('booking_view', {id: item.id}) }}"><i class="bi bi-view-stacked"></i></a>&nbsp;&nbsp;
                     <a href="{{ path('booking_edit', {id: item.id}) }}"><i class="bi bi-pencil-fill"></i></a>&nbsp;&nbsp;

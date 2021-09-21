@@ -22,6 +22,9 @@ img.card-img-top:hover {filter: grayscale(80%);}
 #img_ancha:hover {
   -webkit-transform:scale(1.05);transform:scale(1.05);
 }
+#img_ancha {
+  border-radius: 25px;
+}
 
 #resButton{
   margin-top: 20px;

@@ -1,0 +1,15 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Hello UserGroupController!{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 fst-italic text-center">Crear Usuario</h1>
+        {{form(frmUser)}}
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4" style="margin-top:5px;">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa fa-btn fa-user"></i> Registrarse
+              </button>
+            </div>
+          </div>
+{% endblock %}

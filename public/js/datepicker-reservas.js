@@ -2,7 +2,7 @@ var url = window.location.href;
 
 if (!url.includes("edit")) {
     $('.endDatepicker').prop( "disabled", true );
-}  
+} 
 
 $('.startDatepicker').change(function() {
     $('.endDatepicker').prop( "disabled", false );

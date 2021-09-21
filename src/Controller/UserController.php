@@ -12,12 +12,23 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\SignUpRepository;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/admin/usuarios", name="admon_usuarios")
  */
 class UserController extends AbstractController
 {
+
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security)
+    {
+       $this->security = $security;
+    }
     /**
      * @Route("/", name="")
      */
@@ -50,6 +61,12 @@ class UserController extends AbstractController
      */
     public function edit($id = 0, UserRepository $repo, Request $request)
     {
+
+        $userId = $this->security->getUser()->getId();
+        if ($id !== $userId) {
+            $this->addFlash('error', 'No puedes editar un usuario que no es el tuyo.');
+            return $this->redirectToRoute('admon_usuarios');
+        }
 
         $user = new User();
         if ($id != 0) {

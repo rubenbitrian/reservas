@@ -16,9 +16,16 @@
         </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
+            {% for item in lst %}
+                <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.name}} {{item.surnames}}</td>
+=======
         {% for item in lst %}
             <tr>
                 <td>{{ item.id }}</td>
+>>>>>>> 15528a447d095393cb5c7238ff38050c1d268294
                 <td>{{item.surnames}}, {{item.name}}</td>
                 <td>{{item.userGroup.name}}</td>
                 <td>{{item.email}}</td>

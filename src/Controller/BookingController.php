@@ -78,7 +78,7 @@ class BookingController extends AbstractController
             $em->persist($boking);
             $em->flush();
             $this->addFlash('success','Tus cambios se han guardado!');
-            return $this->redirectToRoute('booking');
+            return $this->redirectToRoute('admon_reservas');
         }
 
 
@@ -126,7 +126,7 @@ class BookingController extends AbstractController
                 'Mensaje to wapo pa to kiski'
             );
             $this->addFlash('success','Tus cambios se han guardado!');
-            return $this->redirectToRoute('booking');
+            return $this->redirectToRoute('admon_reservas');
         }
 
 
@@ -190,7 +190,7 @@ class BookingController extends AbstractController
         $em->flush();
 
         $this->addFlash('success','Tus cambios se han guardado!');
-        return $this->redirectToRoute('booking');
+        return $this->redirectToRoute('admon_reservas');
     }
 
     /**

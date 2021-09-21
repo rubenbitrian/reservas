@@ -21,3 +21,5 @@ CREATE TABLE sign_up
 PRIMARY KEY(id))
 DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`
 ENGINE = InnoDB
+
+INSERT INTO `sign_up` (`id`, `enable`) VALUES (NULL, '1');

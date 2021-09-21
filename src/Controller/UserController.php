@@ -10,15 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 use App\Form\UserType;
->>>>>>> 15528a447d095393cb5c7238ff38050c1d268294
 use App\Repository\SignUpRepository;
-use Symfony\Component\String\Slugger\SluggerInterface;
->>>>>>> 64d84cac4b8204fc9c2d37c563fa96f1d72ad824
 
 /**
  * @Route("/admin/usuarios", name="admon_usuarios")

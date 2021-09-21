@@ -17,6 +17,7 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils, UserRepository $repo, SignUpRepository $repo2): Response
     {
+        $registro = $repo2->find(1);
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
@@ -49,12 +50,12 @@ class SecurityController extends AbstractController
                     return $this->redirectToRoute('default');
                 }else{//Si no entra porque no existe el usuario o no tiene rol
                     //return $this->redirectToRoute('app_login');
-                    return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+                    return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registro' => $registro]);
                 }
             }
         }
 
-        $registro = $repo2->find(1);
+        
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registro' => $registro]);
     }

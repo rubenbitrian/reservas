@@ -24,6 +24,8 @@ class RegistrationController extends AbstractController
      */
     public function index(Request $request, SignUpRepository $repo)
     {
+        $registro = $repo->find(1);
+        
         $user = new User();
 
         $form = $this->createForm(UserType::class, $user);
@@ -53,7 +55,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $registro = $repo->find(1);
+        
 
         return $this->render('registration/index.html.twig', [
             'form' => $form->createView(),

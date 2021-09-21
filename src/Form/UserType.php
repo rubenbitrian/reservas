@@ -19,12 +19,17 @@ class UserType extends AbstractType
     {
         $builder
 <<<<<<< HEAD
+<<<<<<< HEAD
             ->add('name', TextType::class, ['label' => 'Nombre'])
             ->add('surnames', TextType::class, ['label' => 'Apellidos'])
 =======
             ->add('name', TextType::class)
             ->add('surnames', TextType::class)
 >>>>>>> 64d84cac4b8204fc9c2d37c563fa96f1d72ad824
+=======
+            ->add('name', TextType::class, ['label' => 'Nombre' ])
+            ->add('surnames', TextType::class, ['label' => 'Apellidos'])
+>>>>>>> 15528a447d095393cb5c7238ff38050c1d268294
             ->add('email', EmailType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,

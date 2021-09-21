@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\SignUp;
 use App\Entity\SingUp;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +11,11 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+use App\Form\UserType;
+>>>>>>> 15528a447d095393cb5c7238ff38050c1d268294
 use App\Repository\SignUpRepository;
 use Symfony\Component\String\Slugger\SluggerInterface;
 >>>>>>> 64d84cac4b8204fc9c2d37c563fa96f1d72ad824
@@ -25,13 +28,15 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="")
      */
-    public function index(UserRepository $repo): Response
+    public function index(UserRepository $repo, SignUpRepository $repo2): Response
     {
         $lst = $repo->findAll();
+        $registro = $repo2->find(1);
 
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
-            'lst' => $lst
+            'lst' => $lst,
+            'registro' => $registro,
         ]);
     }
 

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b24aa306-f74f-440c-aad8-6f58ff8db749" name="Changes" comment="Add CRUD State">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materiales/insert_usuarios_y_grupos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/materiales/insert_usuarios_y_grupos.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +167,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="directory" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -204,7 +205,7 @@
       <workItem from="1631611130223" duration="1312000" />
       <workItem from="1631612465227" duration="7819000" />
       <workItem from="1631628596996" duration="15965000" />
-      <workItem from="1631773697295" duration="33238000" />
+      <workItem from="1631773697295" duration="35463000" />
     </task>
     <task id="LOCAL-00001" summary="Add CRUD State">
       <created>1631691766203</created>

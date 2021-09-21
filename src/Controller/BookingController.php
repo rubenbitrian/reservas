@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Boking;
 use App\Entity\State;
 use App\Form\BokingType;
+use App\Repository\SignUpRepository;
 use App\Services\Mail;
 use DateInterval;
 use DatePeriod;
@@ -93,7 +94,8 @@ class BookingController extends AbstractController
     /**
      * @Route("/reservar", name="reservar",  options={"expose"=true})
      */
-    public function reservar(Request $request, Mail $mailer) {
+    public function reservar(Request $request, Mail $mailer, SignUpRepository $repo) {
+        $registro = $repo->find(1);
         $boking = new Boking();
 
         $form = $this->createForm(BokingType::class, $boking);
@@ -119,14 +121,16 @@ class BookingController extends AbstractController
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($boking);
-            $em->flush();
+            $data = $em->flush();
             $mailer->mail(
                 'rugbyjavier@gmail.com', 
                 'Prueba desde AddReserva', 
                 'Mensaje to wapo pa to kiski'
             );
             $this->addFlash('success','Tus cambios se han guardado!');
-            return $this->redirectToRoute('admon_reservas');
+            return $this->render('booking/finreservar.html.twig', [
+                'data' => $data 
+            ]);
         }
 
 
@@ -134,7 +138,8 @@ class BookingController extends AbstractController
 
         return $this->render('booking/reservar.html.twig', [
             'form' => $form->createView(),
-            'fechasPilladas' => $fechasPilladas
+            'fechasPilladas' => $fechasPilladas,
+            'registro' => $registro,
         ]);
     }
 

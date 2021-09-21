@@ -2,7 +2,9 @@
     <div class="container d-flex flex-wrap">
       <ul class="nav me-auto">
         <li class="nav-item"><a href="/" class="nav-link link-light px-2 active" aria-current="page">Inicio</a></li>
-        <li class="nav-item"><a href="{{ path('reservar') }}" class="nav-link link-light px-2">Reservar</a></li>
+        {% if is_granted('ROLE_USER') %}
+          <li class="nav-item"><a href="{{ path('reservar') }}" class="nav-link link-light px-2">Reservar</a></li>
+        {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item"><a href="{{ path('calendar') }}" class="nav-link link-light px-2">Admin reservas</a></li>
         {% endif %}
@@ -10,13 +12,9 @@
       <ul class="nav">
       {% if not (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
         <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link link-light px-2">Entra</a></li>
-<<<<<<< HEAD
-        <li class="nav-item"><a href="{{ path('registro') }}" class="nav-link link-light px-2">Regístrate</a></li>
-=======
         {% if registro.enable == true  %}
           <li class="nav-item"><a href="{{ path('registration') }}" class="nav-link link-light px-2">Regístrate</a></li>
         {% endif %}
->>>>>>> 64d84cac4b8204fc9c2d37c563fa96f1d72ad824
       {% else %}
         <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link link-light px-2">Desconectarse</a></li>
       {% endif %}

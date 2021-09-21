@@ -155,7 +155,7 @@ class BookingController extends AbstractController
             $em->persist($boking);
             $em->flush();
             $this->addFlash('success','Tus cambios se han guardado!');
-            return $this->redirectToRoute('booking');
+            return $this->redirectToRoute('admon_reservas');
         }
 
         $fechasPilladas = $this->getDatesFromRangeToDatepicker('d/m/Y'); 

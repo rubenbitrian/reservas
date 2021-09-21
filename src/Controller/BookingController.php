@@ -97,6 +97,8 @@ class BookingController extends AbstractController
     public function reservar(Request $request, Mail $mailer, SignUpRepository $repo) {
         $registro = $repo->find(1);
         $boking = new Boking();
+        $user = new User;
+        $useradmin[] = $user->findByRoleWrongWay('ADMIN');
 
         $form = $this->createForm(BokingType::class, $boking);
         // Creamos bien la reserva
@@ -122,11 +124,13 @@ class BookingController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($boking);
             $data = $em->flush();
-            $mailer->mail(
-                'rugbyjavier@gmail.com', 
-                'Prueba desde AddReserva', 
-                'Mensaje to wapo pa to kiski'
-            );
+            foreach ($useradmin as $admin) {
+                $mailer->mail(
+                    $admin->getEmail(),
+                    'Solicitud de reserva',
+                    'El usuario ' . $user->getName() . ' ' . $user->getSurnames() . ' ha solicitado una reserva.'
+                );
+            }
             $this->addFlash('success','Tus cambios se han guardado!');
             return $this->render('booking/finreservar.html.twig', [
                 'data' => $data 

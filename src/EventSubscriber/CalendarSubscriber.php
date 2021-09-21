@@ -50,8 +50,8 @@ class CalendarSubscriber implements EventSubscriberInterface
 
             );
             $evento->setOptions([
-                'backgroundColor' =>  '#'.$datosBooking['color'],
-                'borderColor' => '#'.$datosBooking['color'],
+                'backgroundColor' =>  $datosBooking['color'],
+                'borderColor' => '#000000',
 
             ]);
 

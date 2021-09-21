@@ -26,7 +26,7 @@
                     {% for boking in bokings %}
                         <tr>
                             <th scope="row" class='id'>{{ boking.id }}</th>
-                            <td scope="col">{{ boking.user}}</td>
+                            <td scope="col">{{ boking.user.name }} {{ boking.user.surnames }}</td>
                             <td scope="col">{{ boking.user.userGroup}}</td>
                             <td scope="col">{{ boking.mobilehome }}</td>
                             <td scope="col">

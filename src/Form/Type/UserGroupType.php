@@ -10,12 +10,13 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use App\Entity\UserGroup;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 
 class UserGroupType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('name', TextType::class, ['required' => true])
-            ->add('color', TextType::class, ['required' => true])
+            ->add('color', ColorType::class, ['required' => true])
             ->add('save', SubmitType::class, ['label' => 'Guardar UserGroup']);
     }
 

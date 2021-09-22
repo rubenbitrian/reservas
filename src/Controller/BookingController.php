@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Boking;
 use App\Entity\State;
+use App\Entity\User;
 use App\Form\BokingType;
 use App\Repository\SignUpRepository;
 use App\Services\Mail;
@@ -115,6 +116,8 @@ class BookingController extends AbstractController
         $form->handleRequest($request);
         // Comporbamos y guardamos la reserva
         if ($form->isSubmitted() && $form->isValid()) {
+            $userRepo = $this->getDoctrine()->getRepository(User::class);
+            $adminUsers = $userRepo->findByRole('ADMIN');
             if ($postData['startDate'] >= $postData['endDate']) {
                 $this->addFlash('error', 'No puedes poner la fecha de inicio inferior a la de fecha final.');
                 return;
@@ -122,11 +125,14 @@ class BookingController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($boking);
             $data = $em->flush();
-            $mailer->mail(
-                'rugbyjavier@gmail.com', 
-                'Prueba desde AddReserva', 
-                'Mensaje to wapo pa to kiski'
-            );
+            foreach ($adminUsers as $adminUser) {
+                $mailer->mail(
+                    $adminUser->getEmail(), 
+                    'Reserva solicitada', 
+                    'Mensaje to wapo pa to kiski'
+                );
+            }
+
             $this->addFlash('success','Tus cambios se han guardado!');
             return $this->render('booking/finreservar.html.twig', [
                 'data' => $data 

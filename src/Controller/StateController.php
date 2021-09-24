@@ -33,7 +33,8 @@ class StateController extends AbstractController
      * @Route("/add", name="_add")
      * @Route("/edit/{id}", name="_edit")
      */
-    public function edit($id = 0, StateRepository $repo, Request $req): Response {
+    public function edit($id = 0, StateRepository $repo, Request $req): Response
+    {
 
         $est = new State();
         if ($id != 0) {
@@ -66,7 +67,8 @@ class StateController extends AbstractController
     /**
      * @Route("/delete/{id}", name="_del")
      */
-    public function delete($id, StateRepository $estRepo): Response {
+    public function delete($id, StateRepository $estRepo): Response
+    {
         $est = $estRepo->find($id);
         if ($est == null) {
             $this->addFlash("danger", "El estado no existe.");
@@ -83,7 +85,8 @@ class StateController extends AbstractController
     /**
      * @Route("/switchState", name="_switchState",  options={"expose"=true})
      */
-    public function switchState(Request $request, Mail $mailer, SerializerInterface $serializer, StateRepository $repo) {
+    public function switchState(Request $request, Mail $mailer, SerializerInterface $serializer, StateRepository $repo)
+    {
         $est = $repo->find($request->request->get('stateId'));
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -91,34 +94,38 @@ class StateController extends AbstractController
 
         if (!$product) {
             return new Response(
-                $serializer->serialize(false, 'json'), 
+                $serializer->serialize(false, 'json'),
                 Response::HTTP_OK
             );
         }
 
         $product->setState($est);
         $entityManager->flush();
-// Envío de email a todos los usuarios, el estado ($est) 2 es confirmado
 
-/*
-        $userRepo = $this->getDoctrine()->getRepository(User::class);
-        $adminUsers = $userRepo->findByRole('ADMIN');
-        if ($est == 2) {
-            foreach ($adminUsers as $adminUser) {
-                $mailer->mail(
-                    $adminUser->getName() . " " . $adminUser->getSurnames <$adminUser->getEmail()>,
-                    'Reserva solicitada',
-                    'Mensaje to wapo pa to kiski'
-                );
-            }
-*/
+        // Envío de email a todos los usuarios, el estado ($est) 2 es confirmado
+        // Revisar lo que trae $product para obtener el usuario que reserva y usarlo en el email
+
+        /*
+                $userBooking = $product;
+
+                $userRepo = $this->getDoctrine()->getRepository(User::class);
+                $users = $userRepo->findAll();
+                if ($est == 2) {
+                    foreach ($users as $user) {
+                        $mailer->mail(
+                            $user->getName() . " " . $user->getSurnames() <$user->getEmail()>,
+                            'Reserva solicitada',
+                            'Mensaje to wapo pa to kiski'
+                        );
+                    }
+        */
 
 
-        }
-        return new Response(
-            $serializer->serialize(true, 'json'), 
-            Response::HTTP_OK
-        );
     }
+return new Response(
+$serializer->serialize(true, 'json'),
+Response::HTTP_OK
+);
+}
 
 }

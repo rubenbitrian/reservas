@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Boking;
 use App\Entity\State;
+use App\Entity\User;
 use App\Form\BokingType;
 use App\Repository\SignUpRepository;
 use App\Services\Mail;
@@ -119,9 +120,17 @@ class BookingController extends AbstractController
                 $this->addFlash('error', 'No puedes poner la fecha de inicio inferior a la de fecha final.');
                 return;
             }
+
+
+            $userRepo = $this->getDoctrine()->getRepository(User::class);
+
+            $userAdmin= $userRepo->findByRole('ADMIN');
             $em = $this->getDoctrine()->getManager();
             $em->persist($boking);
             $data = $em->flush();
+            foreach ($userAdmin as $uAd) {
+                dump($uAd); die;
+            }
             $mailer->mail(
                 'rbitrian@gmail.com',
                 'Solicitud de reserva',

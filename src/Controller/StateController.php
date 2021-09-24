@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Boking;
 use App\Entity\State;
 use App\Form\Type\StateType;
+use App\Services\Mail;
 use App\Repository\StateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -82,7 +83,7 @@ class StateController extends AbstractController
     /**
      * @Route("/switchState", name="_switchState",  options={"expose"=true})
      */
-    public function switchState(Request $request, SerializerInterface $serializer, StateRepository $repo) {
+    public function switchState(Request $request, Mail $mailer, SerializerInterface $serializer, StateRepository $repo) {
         $est = $repo->find($request->request->get('stateId'));
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -97,7 +98,23 @@ class StateController extends AbstractController
 
         $product->setState($est);
         $entityManager->flush();
+// Envío de email a todos los usuarios, el estado ($est) 2 es confirmado
 
+/*
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+        $adminUsers = $userRepo->findByRole('ADMIN');
+        if ($est == 2) {
+            foreach ($adminUsers as $adminUser) {
+                $mailer->mail(
+                    $adminUser->getName() . " " . $adminUser->getSurnames <$adminUser->getEmail()>,
+                    'Reserva solicitada',
+                    'Mensaje to wapo pa to kiski'
+                );
+            }
+*/
+
+
+        }
         return new Response(
             $serializer->serialize(true, 'json'), 
             Response::HTTP_OK

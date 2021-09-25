@@ -125,7 +125,7 @@ class BookingController extends AbstractController
             $mailer->mail(
                 'rbitrian@gmail.com',
                 'Solicitud de reserva',
-                'Mensaje to wapo pa to kiski'
+                'El usuario xxx ha solicitado una reserva.'
             );
             $this->addFlash('success','Tus cambios se han guardado!');
             return $this->render('booking/finreservar.html.twig', [

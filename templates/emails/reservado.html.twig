@@ -1,0 +1,27 @@
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+        h1 {
+            text-align: center;
+        }
+
+        .hola {
+            text-align: left;
+        }
+
+        .aviso {
+            font-size: small;
+            color: #CC0000;
+        }
+    </style>
+    {# '@images/' refers to the Twig namespace defined earlier #}
+    <p class="aviso">No respondas a este email, solo es un aviso de la reserva del mobilhome que se envía automáticamente desde el sistema en
+        <a target="_blank" href="https://bitrian.com">https://bitrian.com</a></p>
+    <p class="hola"><img src="{{ email.image('@images/logo.png') }}" alt="Logo"></p>
+    <h1>Aviso de reserva del mobilhome</h1>
+
+    <p class="hola">Hola {{ nombre }}</p>
+    <p>    </p>
+    <p><code>{{ email.to[0].address }}</code></p>
+
+{% endapply %}

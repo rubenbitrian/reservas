@@ -6,15 +6,15 @@ INSERT INTO `user` (`id`, `user_group_id`, `name`, `surnames`, `email`, `roles`,
 
 
 INSERT INTO `user_group` (`id`, `name`, `color`) VALUES
-(NULL, 'Propietarios', '#0F0'),
-(NULL, 'Bitrián Andaluz', '#FF0'),
-(NULL, 'Bitrián Rodríguez', '#0BF'),
-(NULL, 'Secretaria central de reservas', '#FA0');
+(NULL, 'Propietarios', '#00FF00'),
+(NULL, 'Bitrián Andaluz', '#FFFF00'),
+(NULL, 'Bitrián Rodríguez', '#0FBBFF'),
+(NULL, 'Secretaria central de reservas', '#FFAA00');
 
 INSERT INTO `state` (`id`, `name`) VALUES
-(NULL, 'solicitado'),
-(NULL, 'reservado'),
-(NULL, 'cancelado');
+(1, 'solicitado'),
+(2, 'reservado'),
+(3, 'cancelado');
 
 CREATE TABLE sign_up
 (id INT AUTO_INCREMENT NOT NULL, enable TINYINT(1) NOT NULL,

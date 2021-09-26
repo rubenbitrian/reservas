@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Message;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
@@ -17,15 +20,25 @@ class Mail
         $this->emailAdmin = $emailAdmin;
     }
 
-    public function mail($mail = '', $asunto = "Asunto vacio", $mensaje = "mensaje vacio")
+    public function mail($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos)
     {
         if ($mail != '') {
-            $email = (new Email())
+            $email = (new TemplatedEmail())
                 ->from($this->emailAdmin)
-                ->to($mail)
+                ->to(new Address($mail))
                 ->subject($asunto)
-                ->text($mensaje);
+
+                // path of the Twig template to render
+                ->htmlTemplate('emails/' . $templHTML . '.html.twig')
+                ->textTemplate('emails/' . $templTXT . '.txt.twig')
+
+                // pass variables (name => value) to the template
+                ->context([
+                              'name' => $nombre,
+                              'apellidos' => $apellidos,
+                          ]);
             $this->mailer->send($email);
         }
     }
 }
+

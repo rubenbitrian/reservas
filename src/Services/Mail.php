@@ -24,8 +24,8 @@ class Mail
     {
         if ($mail != '') {
             $email = (new TemplatedEmail())
-                ->from($this->emailAdmin)
-                ->to(new Address($mail))
+                ->from(new Address($this->emailAdmin, 'Sistema de Reservas'))
+                ->to(new Address($mail, $nombre . ' ' . $apellidos))
                 ->subject($asunto)
 
                 // path of the Twig template to render
@@ -34,7 +34,7 @@ class Mail
 
                 // pass variables (name => value) to the template
                 ->context([
-                              'name' => $nombre,
+                              'nombre' => $nombre,
                               'apellidos' => $apellidos,
                           ]);
             $this->mailer->send($email);

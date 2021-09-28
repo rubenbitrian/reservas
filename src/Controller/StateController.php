@@ -85,6 +85,9 @@ class StateController extends AbstractController {
 
         if (!$product) {
             return new Response($serializer->serialize(false, 'json'), Response::HTTP_OK);
+
+            dump($product); die;
+
         }
 
         $product->setState($est);
@@ -93,10 +96,6 @@ class StateController extends AbstractController {
         // Envío de email a todos los usuarios, el estado ($est) 2 es confirmado
         // Revisar lo que trae $product para obtener el usuario que reserva y usarlo en el email
 
-
-                $userBooking = $product;
-
-                dump($userBooking); die;
 
                 $userRepo = $this->getDoctrine()->getRepository(User::class);
                 $users = $userRepo->findAll();

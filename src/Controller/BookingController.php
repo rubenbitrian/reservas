@@ -6,11 +6,15 @@ use App\Entity\Boking;
 use App\Entity\State;
 use App\Entity\User;
 use App\Form\BokingType;
+use Symfony\Component\Mime\Message;
+use Symfony\Component\Mime\Address;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Repository\SignUpRepository;
 use App\Services\Mail;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +34,10 @@ class BookingController extends AbstractController
      * @var Security
      */
     private $security;
+
+    private $mailer;
+
+    private $emailAdmin;
 
     public function __construct(Security $security)
     {
@@ -95,7 +103,7 @@ class BookingController extends AbstractController
     /**
      * @Route("/reservar", name="reservar",  options={"expose"=true})
      */
-    public function reservar(Request $request, Mail $mailer, SignUpRepository $repo) {
+    public function reservar(Request $request, MailerInterface $mailer, SignUpRepository $repo) {
         $registro = $repo->find(1);
         $boking = new Boking();
 
@@ -134,7 +142,22 @@ class BookingController extends AbstractController
                 $templTXT= "reservado";
                 $nombre=$adminUser->getName();
                 $apellidos= $adminUser->getSurnames();
-                $mailer->mail($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
+                $email = (new TemplatedEmail())
+                    ->from(new Address('noresponder@bitrian.com', 'Sistema de Reservas'))
+                    ->to(new Address($mail))
+                    ->subject($asunto)
+
+                    // path of the Twig template to render
+                    ->htmlTemplate('emails/' . $templHTML . '.html.twig')
+                    ->textTemplate('emails/' . $templTXT . '.txt.twig')
+
+                    // pass variables (name => value) to the template
+                    ->context([
+                                  'nombre' => $nombre,
+                                  'apellidos' => $apellidos,
+                              ]);
+                $mailer->send($email);
+//                $mailer->mail($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
             }
 
             $this->addFlash('success','Tus cambios se han guardado!');

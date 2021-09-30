@@ -8,6 +8,7 @@ use App\Entity\State;
 use App\Form\Type\StateType;
 use App\Services\Mail;
 use App\Repository\StateRepository;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,16 @@ use Symfony\Component\Serializer\SerializerInterface;
  * @Route("/admin/estado", name="admon_estado")
  */
 class StateController extends AbstractController {
+
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security) {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/", name="")
      */
@@ -85,9 +96,6 @@ class StateController extends AbstractController {
 
         if (!$product) {
             return new Response($serializer->serialize(false, 'json'), Response::HTTP_OK);
-
-            dump($product); die;
-
         }
 
         $product->setState($est);
@@ -97,8 +105,11 @@ class StateController extends AbstractController {
         // Revisar lo que trae $product para obtener el usuario que reserva y usarlo en el email
 
 
+                //$userBooking = $product;
+
                 $userRepo = $this->getDoctrine()->getRepository(User::class);
                 $users = $userRepo->findAll();
+                $userBooking = $this->security->getUser();
                 if ($est == 2) {
                     foreach ($users as $user) {
                         $mail= $user->getEmail();
@@ -107,7 +118,12 @@ class StateController extends AbstractController {
                         $templTXT= "reservado";
                         $nombre=$user->getName();
                         $apellidos= $user->getSurnames();
-                        $mailer->mail($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
+                        $nombreReserva = $userBooking->getName();
+                        $apellidosReserva =  $userBooking->getSurnames();
+                        $familia = $userBooking->getUserGroup()->getName();
+
+                        // $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
+                        $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);
                     }
 
 

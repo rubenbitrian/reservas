@@ -14,9 +14,6 @@ use App\Form\UserType;
 use App\Repository\SignUpRepository;
 use Symfony\Component\Security\Core\Security;
 
-/**
- * @Route("/admin/usuarios", name="admon_usuarios")
- */
 class UserController extends AbstractController
 {
 
@@ -30,7 +27,7 @@ class UserController extends AbstractController
        $this->security = $security;
     }
     /**
-     * @Route("/", name="")
+     * @Route("/admin/usuarios", name="admon_usuarios")
      */
     public function index(UserRepository $repo, SignUpRepository $repo2): Response
     {
@@ -45,7 +42,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="_del")
+     * @Route("/admin/usuarios/delete/{id}", name="admon_usuarios_del")
      */
     public function eliminar($id, UserRepository $repo)
     {
@@ -56,8 +53,9 @@ class UserController extends AbstractController
         return $this->redirectToRoute("admon_usuarios");
     }
      /**
-     * @Route("/add", name="_add")
-     * @Route("/edit/{id}", name="_edit")
+     * @Route("/admin/usuarios/add", name="admon_usuarios_add")
+     * @Route("/usuario/perfil/edit/{id}", name="user_profile")
+     * @Route("/admin/usuarios/edit/{id}", name="admon_usuarios_edit")
      */
     public function edit($id = 0, UserRepository $repo, Request $request)
     {
@@ -65,7 +63,7 @@ class UserController extends AbstractController
         $userId = $this->security->getUser()->getId();
         if ($id !== $userId) {
             $this->addFlash('error', 'No puedes editar un usuario que no es el tuyo.');
-            return $this->redirectToRoute('admon_usuarios');
+            return $this->redirectToRoute('user_profile');
         }
 
         $user = new User();
@@ -95,7 +93,7 @@ class UserController extends AbstractController
     }
 
     /**
-    * @Route("/habilitar", name="_habilitar")
+    * @Route("/admin/usuarios/habilitar", name="admon_usuarios_habilitar")
     */
     public function habilitar(SignUpRepository $repo){
 

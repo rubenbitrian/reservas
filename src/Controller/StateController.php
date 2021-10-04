@@ -88,10 +88,11 @@ class StateController extends AbstractController {
     /**
      * @Route("/switchState", name="_switchState",  options={"expose"=true})
      */
-    public function switchState(Request $request, Mail $mailer, SerializerInterface $serializer, StateRepository $repo) {
-        $est = $repo->find($request->request->get('stateId'));
-
+    public function switchState(Request $request, Mail $mailer, SerializerInterface $serializer) {
         $entityManager = $this->getDoctrine()->getManager();
+
+        $est = $entityManager->getRepository(State::class)->find($request->request->get('stateId'));
+
         $product = $entityManager->getRepository(Boking::class)->find($request->request->get('bookingId'));
 
         if (!$product) {

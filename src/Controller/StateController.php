@@ -97,37 +97,32 @@ class StateController extends AbstractController {
         if (!$product) {
             return new Response($serializer->serialize(false, 'json'), Response::HTTP_OK);
         }
-
         $product->setState($est);
         $entityManager->flush();
 
         // Envío de email a todos los usuarios, el estado ($est) 2 es confirmado
         // Revisar lo que trae $product para obtener el usuario que reserva y usarlo en el email
+        //$userBooking = $product;
 
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
+        $users = $userRepo->findAll();
+        $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer = $userRepo->find($product->getUser()->getId());
+        if ($est->getId() == 2) {
+            foreach ($users as $user) {
+                $mail= $user->getEmail();
+                $asunto= "Reserva del mobilhome";
+                $templHTML= "reservado";
+                $templTXT= "reservado";
+                $nombre=$user->getName();
+                $apellidos= $user->getSurnames();
+                $nombreReserva = $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer->getName();
+                $apellidosReserva =  $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer->getSurnames();
+                $familia = $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer->getUserGroup()->getName();
 
-                //$userBooking = $product;
-
-                $userRepo = $this->getDoctrine()->getRepository(User::class);
-                $users = $userRepo->findAll();
-                $userBooking = $this->security->getUser();
-                if ($est == 2) {
-                    foreach ($users as $user) {
-                        $mail= $user->getEmail();
-                        $asunto= "Reserva del mobilhome";
-                        $templHTML= "reservado";
-                        $templTXT= "reservado";
-                        $nombre=$user->getName();
-                        $apellidos= $user->getSurnames();
-                        $nombreReserva = $userBooking->getName();
-                        $apellidosReserva =  $userBooking->getSurnames();
-                        $familia = $userBooking->getUserGroup()->getName();
-
-                        // $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
-                        $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);
-                    }
-
-
-                }
-return new Response($serializer->serialize(true, 'json'), Response::HTTP_OK);
-}
+                // $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
+                $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);
+            }
+        }
+        return new Response($serializer->serialize(true, 'json'), Response::HTTP_OK);
+    }
 }

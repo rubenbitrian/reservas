@@ -107,7 +107,9 @@ class StateController extends AbstractController {
 
         $userRepo = $this->getDoctrine()->getRepository(User::class);
         $users = $userRepo->findAll();
-        $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer = $userRepo->find($product->getUser()->getId());
+        $userBooking = $userRepo->find($product->getUser()->getId());
+        $fechaInicio = $product->getStartDate();
+        $fechaFinal = $product->getEndtDate();
         if ($est->getId() == 2) {
             foreach ($users as $user) {
                 $mail= $user->getEmail();
@@ -116,9 +118,11 @@ class StateController extends AbstractController {
                 $templTXT= "reservado";
                 $nombre=$user->getName();
                 $apellidos= $user->getSurnames();
-                $nombreReserva = $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer->getName();
-                $apellidosReserva =  $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer->getSurnames();
-                $familia = $elDiosDeLaReservaQueTieneElPitoMasGrandeQueNadieYEnviaNudesATodasMenosASuMujer->getUserGroup()->getName();
+                $nombreReserva = $userBooking->getName();
+                $apellidosReserva =  $userBooking->getSurnames();
+                $familia = $userBooking->getUserGroup()->getName();
+                $fechaIni = $fechaInicio;
+                $fechaFin = $fechaFinal;
 
                 // $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
                 $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);

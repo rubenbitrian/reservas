@@ -41,7 +41,7 @@
                 <span class="d-none d-sm-inline mx-1">{{ app.user.name }} {{ app.user.surnames }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="{{ path('user_profile') }}">Perfil</a></li>
+                <li><a class="dropdown-item" href="{{ path('user_profile') }}/{{ app.user.id }}">Perfil</a></li>
                 <li><a class="dropdown-item" href="{{ path('app_logout') }}">Salir</a></li>
             </ul>
         </div>

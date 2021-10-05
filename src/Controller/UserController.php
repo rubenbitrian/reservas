@@ -59,8 +59,8 @@ class UserController extends AbstractController
      */
     public function edit($id = 0, UserRepository $repo, Request $request)
     {
-
         $userId = $this->security->getUser()->getId();
+        $id = $userId;
         if ($id !== $userId) {
             $this->addFlash('error', 'No puedes editar un usuario que no es el tuyo.');
             return $this->redirectToRoute('user_profile');

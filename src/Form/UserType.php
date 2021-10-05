@@ -23,8 +23,8 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Contraseña'],
-                'second_options' => ['label' => 'Confirmar contraseña']
+                'first_options' => ['label' => 'Contraseña', 'required' => false],
+                'second_options' => ['label' => 'Confirmar contraseña', 'required' => false]
             ])
             ->add('user_group', EntityType::class, array(
                 'class' => 'App\Entity\UserGroup',

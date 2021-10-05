@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
 use App\Entity\Boking;
 use App\Entity\State;
@@ -108,8 +109,12 @@ class StateController extends AbstractController {
         $userRepo = $this->getDoctrine()->getRepository(User::class);
         $users = $userRepo->findAll();
         $userBooking = $userRepo->find($product->getUser()->getId());
-        $fechaInicio = $product->getStartDate();
-        $fechaFinal = $product->getEndtDate();
+        $dateIni = $product->getStartDate();
+        $fechaInicio = $dateIni->format('d/m/Y');
+        $dateFin = $product->getEndDate();
+        $fechaFinal = $dateFin->format('d/m/Y');
+        //$fechaInicio = (new \DateTime)->format($product->getStartDate());
+        //$fechaFinal = $product->getEndDate();
         if ($est->getId() == 2) {
             foreach ($users as $user) {
                 $mail= $user->getEmail();
@@ -125,7 +130,7 @@ class StateController extends AbstractController {
                 $fechaFin = $fechaFinal;
 
                 // $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos);
-                $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);
+                $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia, $fechaIni,  $fechaFin);
             }
         }
         return new Response($serializer->serialize(true, 'json'), Response::HTTP_OK);

@@ -21,11 +21,14 @@ class UserType extends AbstractType
             ->add('name', TextType::class, ['label' => 'Nombre'])
             ->add('surnames', TextType::class, ['label' => 'Apellidos'])
             ->add('email', EmailType::class)
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => ['label' => 'Contraseña', 'required' => false],
-                'second_options' => ['label' => 'Confirmar contraseña', 'required' => false]
-            ])
+            ->add('plainPassword', RepeatedType::class, array(
+                'type'              => PasswordType::class,
+                'mapped'            => false,
+                'required'          => $options['required'],
+                'first_options'     => array('label' => 'Contrasena'),
+                'second_options'    => array('label' => 'Confirmar contrasena'),
+                'invalid_message' => 'Las contrasenas tienen que ser iguales',
+            ))
             ->add('user_group', EntityType::class, array(
                 'class' => 'App\Entity\UserGroup',
                 'choice_label' => 'name',
@@ -38,6 +41,9 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'required' => true
         ]);
+
+        $resolver->setAllowedTypes('required', 'bool');
     }
 }

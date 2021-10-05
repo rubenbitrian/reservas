@@ -197,13 +197,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function findByRole(string $role)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.roles LIKE :roles')
-            ->setParameter('roles', 'ROLE_%"' . $role . '"%')
-            ->getQuery()
-            ->getResult();
-    }
-
 }

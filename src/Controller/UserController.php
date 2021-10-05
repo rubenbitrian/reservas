@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\SignUpRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
 class UserController extends AbstractController
@@ -57,29 +58,41 @@ class UserController extends AbstractController
      * @Route("/usuario/perfil/edit/{id}", name="user_profile")
      * @Route("/admin/usuarios/edit/{id}", name="admon_usuarios_edit")
      */
-    public function edit($id = 0, UserRepository $repo, Request $request)
+    public function edit($id = 0, UserRepository $repo, Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $userId = $this->security->getUser()->getId();
-        $id = $userId;
-        if ($id !== $userId) {
-            $this->addFlash('error', 'No puedes editar un usuario que no es el tuyo.');
-            return $this->redirectToRoute('user_profile');
+        $userRoles = $this->security->getUser()->getRoles();
+        if (!in_array("ROLE_ADMIN", $userRoles)) {
+            $id = $userId;
         }
+        // if ($id !== $userId) {
+        //     return $this->redirectToRoute('user_profile');
+        // }
 
         $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
         if ($id != 0) {
             $user = $repo->find($id);
+            $form = $this->createForm(UserType::class, $user, ['required' => false]);
+
             if ($user == null) {
                 //flash error
                 return $this->redirectToRoute("admon_usuarios");
             }
         }
-        $form = $this->createForm(UserType::class, $user);
         //handle y procesado submit
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData(); //para mostrar los datos enviados
+            if ($form->get('plainPassword')->getData()) {
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+            }
 
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();

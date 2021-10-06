@@ -44,7 +44,7 @@ class SecurityController extends AbstractController
             }
             //En la entidad User el método getRoles() no debe meter al array el rol de usuario
             if($currentUser->getRoles() == array('ROLE_ADMIN')){
-                return $this->redirectToRoute('admon_mobilhome');
+                return $this->redirectToRoute('admon_reservas');
             }else{//Si tiene rol usuario va a la principal
                 if($currentUser->getRoles() == array('ROLE_USER')){
                     return $this->redirectToRoute('reservar');

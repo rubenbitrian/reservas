@@ -4,9 +4,11 @@
     {% endblock %}
      
     {% block body %}
-        {% include "/includes/carousel.html.twig" %}
+
+    {% include "/includes/carousel.html.twig" %}
         <br>
-        <div class="container">
+        <div class="container-md">
+            <div class="col-12">
             <div class="row featurette">
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Vinaroz </h2>
@@ -19,7 +21,7 @@
         <hr>
             <div class="row featurette">
                 <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Hotel Más</h2>
+                    <h2 class="featurette-heading">Hotel Más de la Costa</h2>
                     <p class="lead">Camping a Hotel Más de la Costa = 3,4 km. todo subida</p>
                 </div>
                 <div class="col-md-5 order-md-1">
@@ -77,4 +79,5 @@
                     </div>
                 </div>
             </div>
+        </div>
     {% endblock %}

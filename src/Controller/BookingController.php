@@ -72,7 +72,7 @@ class BookingController extends AbstractController {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             if ($postData['startDate'] >= $postData['endDate']) {
-                $this->addFlash('error', 'No puedes poner la fecha de inicio inferior a la de fecha final.');
+                $this->addFlash('danger', 'No puedes poner la fecha de inicio inferior a la de fecha final.');
                 return;
             }
             $em = $this->getDoctrine()->getManager();
@@ -157,7 +157,7 @@ class BookingController extends AbstractController {
                 $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);
             }
 
-            $this->addFlash('success', 'Tus cambios se han guardado!');
+            $this->addFlash('success', 'Reserva solicitada correctamente.');
             return $this->render('booking/finreservar.html.twig', ['data' => $data]);
         }
 
@@ -182,7 +182,7 @@ class BookingController extends AbstractController {
             $em = $this->getDoctrine()->getManager();
             $em->persist($boking);
             $em->flush();
-            $this->addFlash('success', 'Tus cambios se han guardado!');
+            $this->addFlash('success', 'Reserva modificada correctamente.');
             return $this->redirectToRoute('admon_reservas');
         }
 
@@ -210,7 +210,7 @@ class BookingController extends AbstractController {
         $em->remove($boking);
         $em->flush();
 
-        $this->addFlash('success', 'Tus cambios se han guardado!');
+        $this->addFlash('success', 'Reserva borrada correctamente.');
         return $this->redirectToRoute('admon_reservas');
     }
 

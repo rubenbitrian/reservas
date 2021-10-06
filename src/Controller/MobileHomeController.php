@@ -50,7 +50,7 @@ class MobileHomeController extends AbstractController
             $this->getDoctrine()->getManager()->persist($est);
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash("success", "Estado guardado correctamente.");
+            $this->addFlash("success", "Mobilhome guardado correctamente.");
 
             return $this->redirectToRoute("admon_mobilhome");
         }

@@ -47,7 +47,7 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('admon_mobilhome');
             }else{//Si tiene rol usuario va a la principal
                 if($currentUser->getRoles() == array('ROLE_USER')){
-                    return $this->redirectToRoute('default');
+                    return $this->redirectToRoute('reservar');
                 }else{//Si no entra porque no existe el usuario o no tiene rol
                     //return $this->redirectToRoute('app_login');
                     return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'registro' => $registro]);

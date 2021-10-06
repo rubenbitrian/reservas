@@ -1,4 +1,16 @@
 {% block cnt_wrapper %}
+    <div class="container-md">
+        <div class="col-6 offset-md-3">
+
+            {% for label, values in app.flashes %}
+                {% for msg in values %}
+                    <div class="alert alert-{{ label }}" role="alert">
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
     {% block body %}
         <h1>Contenido </h1>
     {% endblock %}

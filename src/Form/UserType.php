@@ -25,9 +25,9 @@ class UserType extends AbstractType
                 'type'              => PasswordType::class,
                 'mapped'            => false,
                 'required'          => $options['required'],
-                'first_options'     => array('label' => 'Contrasena'),
-                'second_options'    => array('label' => 'Confirmar contrasena'),
-                'invalid_message' => 'Las contrasenas tienen que ser iguales',
+                'first_options'     => array('label' => 'Contraseña'),
+                'second_options'    => array('label' => 'Confirmar contraseña'),
+                'invalid_message' => 'Las contraseñas tienen que ser iguales',
             ))
             ->add('user_group', EntityType::class, array(
                 'class' => 'App\Entity\UserGroup',

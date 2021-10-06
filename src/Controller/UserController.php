@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\SignUpRepository;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Security;
 
 class UserController extends AbstractController
@@ -58,7 +58,7 @@ class UserController extends AbstractController
      * @Route("/usuario/perfil/edit/{id}", name="user_profile")
      * @Route("/admin/usuarios/edit/{id}", name="admon_usuarios_edit")
      */
-    public function edit($id = 0, UserRepository $repo, Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function edit($id = 0, UserRepository $repo, Request $request, UserPasswordHasherInterface $passwordHasher)
     {
         $userId = $this->security->getUser()->getId();
         $userRoles = $this->security->getUser()->getRoles();
@@ -77,7 +77,7 @@ class UserController extends AbstractController
             $form = $this->createForm(UserType::class, $user, ['required' => false]);
 
             if ($user == null) {
-                //flash error
+                $this->addFlash('danger', 'Es necesario un usuario para poder editarlo.');
                 return $this->redirectToRoute("admon_usuarios");
             }
         }
@@ -87,7 +87,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData()) {
                 $user->setPassword(
-                    $passwordEncoder->encodePassword(
+                    $passwordHasher->hashPassword(
                         $user,
                         $form->get('plainPassword')->getData()
                     )
@@ -96,10 +96,17 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute("admon_usuarios");
+            $this->addFlash('success', 'Tus cambios se han guardado!');
+            if (!in_array("ROLE_ADMIN", $userRoles)) {
+                return $this->redirectToRoute("user_profile");
+            } else {
+                return $this->redirectToRoute("admon_usuarios");
+            }
+
+
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('user/perfil.html.twig', [
             'frmUser' => $form->createView(),
             'user' => $user,
         ]);
@@ -118,6 +125,7 @@ class UserController extends AbstractController
         }
         $this->getDoctrine()->getManager()->persist($registro);
         $this->getDoctrine()->getManager()->flush();
+        $this->addFlash('success', 'Tus cambios se han guardado!');
         return $this->redirectToRoute("admon_usuarios");
     }
 }

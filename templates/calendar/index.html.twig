@@ -5,82 +5,77 @@
 
 {% block body %}
 
-<div class="container">
-    <div id="calendar-holder"></div>
-</div>
+    <div class="container">
+        <div id="calendar-holder"></div>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () => {
-    var calendarEl = document.getElementById('calendar-holder');
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            var calendarEl = document.getElementById('calendar-holder');
 
 
-/*
-events: [
-    {
-      start: '2021-09-10T10:00:00',
-      end: '2021-09-25T16:00:00',
-      display: 'background'
-    }
-    ]
+            /*
+            events: [
+                {
+                  start: '2021-09-10T10:00:00',
+                  end: '2021-09-25T16:00:00',
+                  display: 'background'
+                }
+                ]
 
 
-*/
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        defaultView: 'dayGridMonth',
-        locale: 'es',
-        firstDay:1,
-        editable: true,
-        eventSources: [
-            {
-                url: "/fc-load-events",
-                editable: false,
-                method: "POST",
-                extraParams: {
-                    filters: JSON.stringify({})
+            */
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                defaultView: 'dayGridMonth',
+                firstDay: 1,
+                editable: true,
+                eventSources: [
+                    {
+                        url: "/fc-load-events",
+                        editable: false,
+                        method: "POST",
+                        extraParams: {
+                            filters: JSON.stringify({})
+                        },
+                        failure: () => {
+                            // alert("There was an error while fetching FullCalendar!");
+                        },
+                    },
+                ],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
                 },
-                failure: () => {
-                    // alert("There was an error while fetching FullCalendar!");
-                },
-            },
-        ],
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        },
-        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-        timeZone: 'Europe/Madrid',
-    });
-    calendar.render();
-});
+                plugins: ['interaction', 'dayGrid', 'timeGrid'], // https://fullcalendar.io/docs/plugin-index
+                timeZone: 'Europe/Madrid',
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                buttonText: {
+                    today: 'Hoy',
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    list: 'Lista'
+                }
+            });
+            calendar.render();
+        });
 
-    $('#calendar-holder').fullCalendar({
-        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
-        dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'],
-        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        buttonText: {
-            today:    'Hoy',
-            month:    'Mes',
-            week:     'Semana',
-            day:      'Día',
-            list:     'Lista'
+    </script>
+
+    <style>
+        .fc-event {
+            height: 100px !important;
         }
-
-    });
-
-</script>
-
-<style>
-    .fc-event{
-        height:100px !important;
-    }
-</style>
+    </style>
 {% endblock %}
 
 

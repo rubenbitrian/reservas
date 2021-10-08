@@ -7,7 +7,7 @@
 {% endblock %}
 {% block body %}
 
-<div class="container w-100 p-3">
+<div class="container p-3">
     <form action="{{ path('reservar') }}" method="POST" >
         <h1>Reservar </h1>
         <div class="row">
@@ -41,4 +41,5 @@
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <script src="{{ asset('js/calendar-script.js') }}"></script>
 <script src="{{ asset('js/datepicker-reservas.js') }}"></script>
+    {% include 'calendar/reservas.html.twig' %}
 {% endblock %}

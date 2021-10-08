@@ -28,7 +28,6 @@ events: [
 */
     var calendar = new FullCalendar.Calendar(calendarEl, {
         defaultView: 'dayGridMonth',
-        locale: 'es',
         firstDay:1,
         editable: true,
         eventSources: [
@@ -51,6 +50,18 @@ events: [
         },
         plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
         timeZone: 'Europe/Madrid',
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        buttonText: {
+            today: 'Hoy',
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día',
+            list: 'Lista'
+        }
+
     });
     calendar.render();
 });

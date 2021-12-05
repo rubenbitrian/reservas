@@ -52,8 +52,8 @@ class UserController extends AbstractController {
 
   /**
    * @Route("/admin/usuarios/add", name="admon_usuarios_add")
-   * @Route("/usuario/perfil/edit/{id}", name="user_profile")
    * @Route("/admin/usuarios/edit/{id}", name="admon_usuarios_edit")
+   * @Route("/usuario/perfil/edit/{id}", name="user_profile")
    */
   public function edit($id = 0, UserRepository $repo, Request $request, UserPasswordHasherInterface $passwordHasher) {
     $userId    = $this->security->getUser()->getId();

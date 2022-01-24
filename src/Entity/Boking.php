@@ -8,105 +8,95 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=BokingRepository::class)
  */
-class Boking
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+class Boking {
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+  /**
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @ORM\Column(type="integer")
+   */
+  private $id;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $startDate;
+  /**
+   * @ORM\ManyToOne(targetEntity=User::class)
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $user;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $endDate;
+  /**
+   * @ORM\Column(type="date")
+   */
+  private $startDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=State::class, inversedBy="bokings")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $state;
+  /**
+   * @ORM\Column(type="date")
+   */
+  private $endDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=MobileHome::class, inversedBy="bokings")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $mobileHome;
+  /**
+   * @ORM\ManyToOne(targetEntity=State::class, inversedBy="bokings")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $state;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  /**
+   * @ORM\ManyToOne(targetEntity=MobileHome::class, inversedBy="bokings")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $mobileHome;
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
+  public function getId():?int {
+    return $this->id;
+  }
 
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
+  public function getUser():?user {
+    return $this->user;
+  }
 
-        return $this;
-    }
+  public function setUser(?user $user):self {
+    $this->user = $user;
 
-    public function getStartDate(): ?\DateTimeInterface
-    {
-        return $this->startDate;
-    }
+    return $this;
+  }
 
-    public function setStartDate(\DateTimeInterface $startDate): self
-    {
-        $this->startDate = $startDate;
+  public function getStartDate():?\DateTimeInterface {
+    return $this->startDate;
+  }
 
-        return $this;
-    }
+  public function setStartDate(\DateTimeInterface $startDate):self {
+    $this->startDate = $startDate;
 
-    public function getEndDate(): ?\DateTimeInterface
-    {
-        return $this->endDate;
-    }
+    return $this;
+  }
 
-    public function setEndDate(\DateTimeInterface $endDate): self
-    {
-        $this->endDate = $endDate;
+  public function getEndDate():?\DateTimeInterface {
+    return $this->endDate;
+  }
 
-        return $this;
-    }
+  public function setEndDate(\DateTimeInterface $endDate):self {
+    $this->endDate = $endDate;
 
-    public function getState(): ?state
-    {
-        return $this->state;
-    }
+    return $this;
+  }
 
-    public function setState(?state $state): self
-    {
-        $this->state = $state;
+  public function getState():?state {
+    return $this->state;
+  }
 
-        return $this;
-    }
+  public function setState(?state $state):self {
+    $this->state = $state;
 
-    public function getMobileHome(): ?MobileHome
-    {
-        return $this->mobileHome;
-    }
+    return $this;
+  }
 
-    public function setMobileHome(?MobileHome $mobileHome): self
-    {
-        $this->mobileHome = $mobileHome;
+  public function getMobileHome():?MobileHome {
+    return $this->mobileHome;
+  }
 
-        return $this;
-    }
+  public function setMobileHome(?MobileHome $mobileHome):self {
+    $this->mobileHome = $mobileHome;
+
+    return $this;
+  }
+
 }

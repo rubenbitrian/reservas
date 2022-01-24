@@ -3,55 +3,55 @@
 {% block title %}Acceder al sistema{% endblock %}
 
 {% block body %}
-<div class="container text-center form-signin">
-<div class="row">
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <div class="container text-center form-signin">
+        <div class="row">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            Has accedido como {{ app.user.username }}, <a href="{{ path('app_logout') }}">Salir</a>
+                {% if app.user %}
+                    <div class="mb-3">
+                        Has accedido como {{ app.user.username }}, <a href="{{ path('app_logout') }}">Salir</a>
+                    </div>
+                {% endif %}
+
+
+                <img class="mb-4" src="/images/logo.png" alt="" width="172" height="57">
+                <h1 class="h3 mb-3 fw-normal">Introduce tus datos de acceso</h1>
+                <div class="form-floating ">
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                           class="form-control mt-2 col-3" autocomplete="email" required autofocus>
+                    <label for="inputEmail" id="inputEmail">Email</label>
+                </div>
+                <div class="form-floating ">
+                    <input type="password" name="password" id="inputPassword" class="form-control mt-2"
+                           autocomplete="current-password" required>
+                    <label for="inputPassword" id="inputPassword">Clave</label>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+                {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+                #}
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recuérdame
+                    </label>
+                </div>
+                <button class="w-25 btn btn-lg btn-primary" type="submit">Acceder</button>
+                <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+            </form>
         </div>
-    {% endif %}
-
-
-    <img class="mb-4" src="/images/logo.png" alt="" width="172" height="57">
-    <h1 class="h3 mb-3 fw-normal">Introduce tus datos de acceso</h1>
-    <div class="form-floating ">
-      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-2 col-3"  autocomplete="email" required autofocus>
-      <label for="inputEmail" id="inputEmail">Email</label>
     </div>
-    <div class="form-floating ">
-      <input type="password" name="password" id="inputPassword" class="form-control mt-2" autocomplete="current-password" required>
-      <label for="inputPassword" id="inputPassword">Clave</label>
-    </div>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Recuérdame
-      </label>
-    </div>
-    <button class="w-25 btn btn-lg btn-primary" type="submit">Acceder</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-</form>
-</div></div>
 {% endblock %}

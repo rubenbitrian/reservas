@@ -14,187 +14,169 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+class User implements UserInterface, PasswordAuthenticatedUserInterface {
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
+  /**
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @ORM\Column(type="integer")
+   */
+  private $id;
 
-    /**
-     * @ORM\Column(type="string", length=180)
-     */
-    private $name;
+  /**
+   * @ORM\Column(type="string", length=180, unique=true)
+   */
+  private $email;
 
-    /**
-     * @ORM\Column(type="string", length=200)
-     */
-    private $surnames;
+  /**
+   * @ORM\Column(type="string", length=180)
+   */
+  private $name;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
+  /**
+   * @ORM\Column(type="string", length=200)
+   */
+  private $surnames;
 
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
+  /**
+   * @ORM\Column(type="json")
+   */
+  private $roles = [];
 
-    /**
-     * @ORM\ManyToOne(targetEntity=UserGroup::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $userGroup;
+  /**
+   * @var string The hashed password
+   * @ORM\Column(type="string")
+   */
+  private $password;
 
-    public function __toString()
-    {
-        return $this->email;
-    }
+  /**
+   * @ORM\ManyToOne(targetEntity=UserGroup::class, inversedBy="users")
+   * @ORM\JoinColumn(nullable=true)
+   */
+  private $userGroup;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  public function __toString() {
+    return $this->email;
+  }
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+  public function getId():?int {
+    return $this->id;
+  }
 
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+  /**
+   * @return string
+   */
+  public function getName() {
+    return $this->name;
+  }
 
-        return $this;
-    }
+  /**
+   * @param   string  $name
+   */
+  public function setName($name) {
+    $this->name = $name;
 
-    /**
-     * @return string
-     */
-    public function getSurnames()
-    {
-        return $this->surnames;
-    }
+    return $this;
+  }
 
-    /**
-     * @param string $surnames
-     */
-    public function setSurnames($surnames)
-    {
-        $this->surnames = $surnames;
+  /**
+   * @return string
+   */
+  public function getSurnames() {
+    return $this->surnames;
+  }
 
-        return $this;
-    }
+  /**
+   * @param   string  $surnames
+   */
+  public function setSurnames($surnames) {
+    $this->surnames = $surnames;
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+    return $this;
+  }
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+  public function getEmail():?string {
+    return $this->email;
+  }
 
-        return $this;
-    }
+  public function setEmail(string $email):self {
+    $this->email = $email;
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier()
-    {
-        return (string)$this->email;
-    }
+    return $this;
+  }
 
-    /**
-     * @deprecated since Symfony 5.3, use getUserIdentifier instead
-     */
-    public function getUsername(): string
-    {
-        return (string)$this->email;
-    }
+  /**
+   * A visual identifier that represents this user.
+   *
+   * @see UserInterface
+   */
+  public function getUserIdentifier() {
+    return (string) $this->email;
+  }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+  /**
+   * @deprecated since Symfony 5.3, use getUserIdentifier instead
+   */
+  public function getUsername():string {
+    return (string) $this->email;
+  }
 
-        return array_unique($roles);
-    }
+  /**
+   * @see UserInterface
+   */
+  public function getRoles():array {
+    $roles = $this->roles;
+    // guarantee every user at least has ROLE_USER
+    $roles[] = 'ROLE_USER';
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
+    return array_unique($roles);
+  }
 
-        return $this;
-    }
+  public function setRoles(array $roles):self {
+    $this->roles = $roles;
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
+    return $this;
+  }
 
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
+  /**
+   * @see PasswordAuthenticatedUserInterface
+   */
+  public function getPassword():string {
+    return $this->password;
+  }
 
-        return $this;
-    }
+  public function setPassword(string $password):self {
+    $this->password = $password;
 
-    /**
-     * Returning a salt is only needed, if you are not using a modern
-     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
-     *
-     * @see UserInterface
-     */
-    public function getSalt(): ?string
-    {
-        return null;
-    }
+    return $this;
+  }
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
+  /**
+   * Returning a salt is only needed, if you are not using a modern
+   * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+   *
+   * @see UserInterface
+   */
+  public function getSalt():?string {
+    return NULL;
+  }
 
-    public function getUserGroup(): ?userGroup
-    {
-        return $this->userGroup;
-    }
+  /**
+   * @see UserInterface
+   */
+  public function eraseCredentials() {
+    // If you store any temporary, sensitive data on the user, clear it here
+    // $this->plainPassword = null;
+  }
 
-    public function setUserGroup(?userGroup $userGroup): self
-    {
-        $this->userGroup = $userGroup;
+  public function getUserGroup():?userGroup {
+    return $this->userGroup;
+  }
 
-        return $this;
-    }
+  public function setUserGroup(?userGroup $userGroup):self {
+    $this->userGroup = $userGroup;
+
+    return $this;
+  }
 
 }

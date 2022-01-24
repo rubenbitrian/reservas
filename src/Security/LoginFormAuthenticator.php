@@ -19,76 +19,64 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
-{
-    use TargetPathTrait;
+class LoginFormAuthenticator extends AbstractLoginFormAuthenticator {
 
-    public const LOGIN_ROUTE = 'app_login';
+  use TargetPathTrait;
 
-    private UrlGeneratorInterface $urlGenerator;
+  public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
-    {
-        $this->urlGenerator = $urlGenerator;
+  private UrlGeneratorInterface $urlGenerator;
+
+  public function __construct(UrlGeneratorInterface $urlGenerator) {
+    $this->urlGenerator = $urlGenerator;
+  }
+
+  public function authenticate(Request $request):PassportInterface {
+    $email = $request->request->get('email', '');
+
+    $request->getSession()->set(Security::LAST_USERNAME, $email);
+
+    return new Passport(new UserBadge($email), new PasswordCredentials($request->request->get('password', '')), [new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),]);
+  }
+
+  public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName):?Response {
+    if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+      return new RedirectResponse($targetPath);
     }
 
-    public function authenticate(Request $request): PassportInterface
-    {
-        $email = $request->request->get('email', '');
+    //if($this->securityContext->isGranted('ROLE_ADMIN')){
 
-        $request->getSession()->set(Security::LAST_USERNAME, $email);
+    //throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+    //    return new RedirectResponse($this->urlGenerator->generate('admon_mobilhome'));
+    //}else{
+    return new RedirectResponse($this->urlGenerator->generate('app_login'));
+    //}
 
-        return new Passport(
-            new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
-            [
-                new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),
-            ]
-        );
-    }
+    //        $user = new User();
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
-    {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
-        }
+    //        $user = $token->getUser();
 
-        //if($this->securityContext->isGranted('ROLE_ADMIN')){
-            
-            //throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-        //    return new RedirectResponse($this->urlGenerator->generate('admon_mobilhome'));
-        //}else{
-            return new RedirectResponse($this->urlGenerator->generate('app_login'));
-        //}
-
-//        $user = new User();
-        
-//        $user = $token->getUser();
-
-//        if($user->getRoles() == 'ROLE_ADMIN'){
-//            return new RedirectResponse($this->urlGenerator->generate('admon_mobilhome'));
-//        }
-//        else{
-//            if($user->getRoles() == 'ROLE_USER'){
-//                return new RedirectResponse($this->urlGenerator->generate('app_login'));
-//            }
+    //        if($user->getRoles() == 'ROLE_ADMIN'){
+    //            return new RedirectResponse($this->urlGenerator->generate('admon_mobilhome'));
+    //        }
+    //        else{
+    //            if($user->getRoles() == 'ROLE_USER'){
+    //                return new RedirectResponse($this->urlGenerator->generate('app_login'));
+    //            }
     //       try{
     //            return new RedirectResponse($this->urlGenerator->generate('admon_mobilhome'));
     //        }catch(Exception $rdm){
-            
-//        }
 
-        
-                
+    //        }
+
     //            }
     //        }
-        
-        
-       // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
-    }
 
-    protected function getLoginUrl(Request $request): string
-    {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
-    }
+    // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+  }
+
+  protected function getLoginUrl(Request $request):string {
+    return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+  }
+
 }

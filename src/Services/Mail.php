@@ -18,7 +18,7 @@ class Mail {
     $this->emailAdmin = $emailAdmin;
   }
 
-  public function enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia, $fechaIni = "", $fechaFin = "") {
+  public function enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $fechaIni = "", $fechaFin = "") {
     if ($mail != '') {
       $email = (new TemplatedEmail())->from(new Address('noresponder@bitrian.com', 'Sistema de Reservas'))->to(new Address($mail, $nombre . ' ' . $apellidos))->subject($asunto)
         //->embedFromPath('D:\webs\bitrian-com\reservas\public\images\logo_mail.png', 'logo_mail')
@@ -26,7 +26,7 @@ class Mail {
         // path of the Twig template to render
                                      ->htmlTemplate('emails/' . $templHTML . '.html.twig')->textTemplate('emails/' . $templTXT . '.txt.twig')
         // pass variables (name => value) to the template
-                                     ->context(['nombre' => $nombre, 'apellidos' => $apellidos, 'nombreReserva' => $nombreReserva, 'apellidosReserva' => $apellidosReserva, 'familia' => $familia, 'fechaIni' => $fechaIni, 'fechaFin' => $fechaFin,]);
+                                     ->context(['nombre' => $nombre, 'apellidos' => $apellidos, 'nombreReserva' => $nombreReserva, 'apellidosReserva' => $apellidosReserva, 'fechaIni' => $fechaIni, 'fechaFin' => $fechaFin,]);
       $this->mailer->send($email);
     }
   }

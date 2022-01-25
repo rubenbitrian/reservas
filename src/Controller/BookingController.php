@@ -125,6 +125,9 @@ class BookingController extends AbstractController {
       $em = $this->getDoctrine()->getManager();
       $em->persist($boking);
       $data = $em->flush();
+      /**
+       * Obtenemos los datos necesarios para enviar los email correspondientes
+       */
       foreach ($adminUsers as $adminUser) {
         $mail             = $adminUser->getEmail();
         $asunto           = "Reserva del mobilhome";
@@ -134,29 +137,8 @@ class BookingController extends AbstractController {
         $apellidos        = $adminUser->getSurnames();
         $nombreReserva    = $userBooking->getName();
         $apellidosReserva = $userBooking->getSurnames();
-       // $familia          = $userBooking->getUserGroup()->getName();
 
-        /*
-                        $email = (new TemplatedEmail())->from(new Address('noresponder@bitrian.com', 'Sistema de Reservas'))
-                                                       ->to(new Address($mail, $nombre . ' ' . $apellidos))
-                                                       ->subject($asunto)
-                                                       ->embedFromPath('D:\webs\bitrian-com\reservas\public\images\logo_mail.png', 'logo_mail')
-                                                       ->html('<img src="cid:logo_mail">')
-                            // path of the Twig template to render
-                                                       ->htmlTemplate('emails/' . $templHTML . '.html.twig')
-                                                       ->textTemplate('emails/' . $templTXT . '.txt.twig')
-                            // pass variables (name => value) to the template
-                                                       ->context([
-                                                           'nombre' => $nombre,
-                                                           'apellidos' => $apellidos,
-                                                           'nombreReserva' => $nombreReserva,
-                                                           'apellidosReserva' => $apellidosReserva,
-                                                           'familia' => $familia,
-                                                                     ]);
-                        $mailer->send($email);
-                        */
-
-        $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva); //, $familia);
+        $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva);
       }
 
       $this->addFlash('success', 'Reserva solicitada correctamente.');

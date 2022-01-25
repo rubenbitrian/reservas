@@ -1,0 +1,33 @@
+{% apply inline_css %}
+<style>
+    {# here, define your CSS styles as usual #}
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    .hola {
+        text-align: left;
+    }
+
+    .aviso {
+        font-size: 10px;
+        color: #CC0000;
+    }
+</style>
+{# '@images/' refers to the Twig namespace defined earlier #}
+<p class="aviso">No respondas a este email, solo es un aviso de la reserva del mobilhome que se envía automáticamente desde el sistema en
+    <a target="_blank" href="https://bitrian.com">https://bitrian.com</a></p>
+<p class="hola"><img src="{{ email.image('@images/logo_mail.png') }}" alt="Logo"></p>
+<h1>Email de restablecimiento de contraseña</h1>
+
+<p class="hola">Hola {{ nombre }}</p>
+
+<p>Para restablecer tu contraseña, haz click en el siguiente enlace:</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>Este enlace caducará en {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>

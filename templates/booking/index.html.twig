@@ -39,9 +39,9 @@
                             <td scope="col">{{ boking.startDate | date("d/m/Y") }}</td>
                             <td scope="col">{{ boking.endDate | date("d/m/Y") }}</td>
                             <td scope="col">
-                                <a href="{{ path('booking_view', {id: boking.id}) }}">View</a>
-                                <a href="{{ path('booking_edit', {id: boking.id}) }}">Edit</a>
-                                <a href="{{ path('booking_delete', {id: boking.id}) }}">Delete</a>
+                                <a href="{{ path('booking_view', {id: boking.id}) }}">Ver</a>
+                                <a href="{{ path('booking_edit', {id: boking.id}) }}">Editar</a>
+                                <a href="{{ path('booking_delete', {id: boking.id}) }}">Borrar</a>
                             </td>
                         </tr>
                     {% endfor %}

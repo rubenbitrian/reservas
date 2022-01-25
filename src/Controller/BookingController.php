@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Boking;
 use App\Entity\State;
 use App\Entity\User;
+use App\Entity\UserGroup;
 use App\Form\BokingType;
 use Symfony\Component\Mime\Message;
 use Symfony\Component\Mime\Address;
@@ -133,7 +134,7 @@ class BookingController extends AbstractController {
         $apellidos        = $adminUser->getSurnames();
         $nombreReserva    = $userBooking->getName();
         $apellidosReserva = $userBooking->getSurnames();
-        $familia          = $userBooking->getUserGroup()->getName();
+       // $familia          = $userBooking->getUserGroup()->getName();
 
         /*
                         $email = (new TemplatedEmail())->from(new Address('noresponder@bitrian.com', 'Sistema de Reservas'))
@@ -155,7 +156,7 @@ class BookingController extends AbstractController {
                         $mailer->send($email);
                         */
 
-        $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva, $familia);
+        $mailer->enviar($mail, $asunto, $templHTML, $templTXT, $nombre, $apellidos, $nombreReserva, $apellidosReserva); //, $familia);
       }
 
       $this->addFlash('success', 'Reserva solicitada correctamente.');

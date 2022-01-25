@@ -18,6 +18,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+
 
 class LoginFormAuthenticator extends AbstractLoginFormAuthenticator {
 
@@ -36,7 +38,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator {
 
     $request->getSession()->set(Security::LAST_USERNAME, $email);
 
-    return new Passport(new UserBadge($email), new PasswordCredentials($request->request->get('password', '')), [new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),]);
+    return new Passport(new UserBadge($email), new PasswordCredentials($request->request->get('password', '')), [new CsrfTokenBadge('authenticate', $request->get('_csrf_token')), new RememberMeBadge(),]);
   }
 
   public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName):?Response {

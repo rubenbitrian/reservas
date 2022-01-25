@@ -1,0 +1,11 @@
+No respondas a este email, solo es un aviso de la reserva del mobilhome que se envía automáticamente desde el sistema en https://bitrian.com
+
+Email de restablecimiento de contraseña
+
+Hola {{ nombre }}
+
+Para restablecer tu contraseña, haz click en el siguiente enlace, si el enlace no está activo, cópialo y pégalo en tu navegador:
+
+{{ url('app_reset_password', {token: resetToken.token}) }}
+
+Este enlace caducará en {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
